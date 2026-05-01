@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Fidelity Recruiting Agent </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'deep-space': '#0a0e1a',
+                        'neon-cyan': '#00d4ff',
+                        'signal-green': '#10b981',
+                        'warning-amber': '#f59e0b',
+                        'ghost-white': '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: #0a0e1a;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neon-border {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #00d4ff;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .slide-up {
+            animation: slideUp 0.4s ease-out forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .code-block {
+            background: #1e293b;
+            border-left: 3px solid #00d4ff;
+        }
+        .confidence-bar {
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .candidate-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            animation: scan 3s linear infinite;
+            opacity: 0.5;
+        }
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(400px); }
+        }
+        .ecosystem-node {
+            transition: all 0.3s ease;
+        }
+        .ecosystem-node:hover {
+            transform: scale(1.1);
+            filter: brightness(1.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-8 h-8 rounded-full bg-neon-cyan/20 flex items-center justify-center">
+                        <div class="w-3 h-3 bg-neon-cyan rounded-full"></div>
+                    </div>
+                    <div class="absolute inset-0 w-8 h-8 rounded-full border border-neon-cyan/50 pulse-ring"></div>
+                </div>
+                <span class="font-bold text-lg tracking-tight">Centaur<span class="text-neon-cyan">Intel</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                <button onclick="switchTab('discover')" class="hover:text-white transition-colors tab-btn active" data-tab="discover">Talent Discovery</button>
+                <button onclick="switchTab('vetting')" class="hover:text-white transition-colors tab-btn" data-tab="vetting">Deep Vetting</button>
+                <button onclick="switchTab('market')" class="hover:text-white transition-colors tab-btn" data-tab="market">Market Intelligence</button>
+                <button onclick="switchTab('outreach')" class="hover:text-white transition-colors tab-btn" data-tab="outreach">1:1 Outreach</button>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-signal-green/10 border border-signal-green/30">
+                    <div class="w-2 h-2 bg-signal-green rounded-full animate-pulse"></div>
+                    <span class="text-xs font-mono text-signal-green">AGENT ACTIVE</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+
+        <!-- Hero Section -->
+        <div class="mb-12 slide-up">
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 glass-panel rounded-2xl p-8 neon-border relative overflow-hidden">
+                    <div class="scan-line"></div>
+                    <div class="relative z-10">
+                        <h1 class="text-4xl font-bold mb-4 leading-tight">
+                            High-Fidelity <span class="text-neon-cyan">Talent Intelligence</span>
+                        </h1>
+                        <p class="text-slate-400 text-lg mb-6 max-w-2xl">
+                            Autonomous agents perform deep reasoning across GitHub, LinkedIn, and technical ecosystems to identify, vet, and engage the top 1% of RISC-V and Agentic AI talent.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="runDiscoverySimulation()" class="px-6 py-3 bg-neon-cyan/10 hover:bg-neon-cyan/20 border border-neon-cyan/50 rounded-lg text-neon-cyan font-medium transition-all flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                Run Discovery Agent
+                            </button>
+                            <button onclick="showStrategyModal()" class="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white font-medium transition-all">
+                                View Market Strategy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Stats -->
+                <div class="glass-panel rounded-2xl p-6 space-y-4">
+                    <h3 class="text-sm font-mono text-slate-500 uppercase tracking-wider">Agent Status</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-400">Candidates Mapped</span>
+                            <span class="font-mono text-neon-cyan" id="stat-mapped">2,847</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-1.5">
+                            <div class="bg-neon-cyan h-1.5 rounded-full confidence-bar" style="width: 78%"></div>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="text-sm text-slate-400">Deep Vetted</span>
+                            <span class="font-mono text-signal-green" id="stat-vetted">142</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-400">Response Rate</span>
+                            <span class="font-mono text-warning-amber" id="stat-response">34.2%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-400">Time Saved (CTO)</span>
+                            <span class="font-mono text-white" id="stat-time">10.4 hrs/wk</span>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <div class="w-2 h-2 bg-signal-green rounded-full animate-pulse"></div>
+                            Real-time ecosystem monitoring active
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Discover -->
+        <div id="tab-discover" class="tab-content">
+            <div class="grid lg:grid-cols-12 gap-6">
+                <!-- Search & Filters -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="glass-panel rounded-xl p-6">
+                        <h3 class="font-semibold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                            Agent Parameters
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-mono text-slate-500 uppercase mb-2 block">Domain</label>
+                                <select id="domain-select" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none transition-colors">
+                                    <option value="riscv">RISC-V Architecture</option>
+                                    <option value="agentic">Agentic AI Systems</option>
+                                    <option value="silicon">Silicon Design</option>
+                                    <option value="compiler">Compiler Engineering</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="text-xs font-mono text-slate-500 uppercase mb-2 block">Seniority</label>
+                                <div class="flex gap-2">
+                                    <button class="flex-1 py-2 text-xs rounded-lg bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-medium" onclick="toggleSeniority(this)">Staff+</button>
+                                    <button class="flex-1 py-2 text-xs rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10" onclick="toggleSeniority(this)">Senior</button>
+                                    <button class="flex-1 py-2 text-xs rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10" onclick="toggleSeniority(this)">Mid</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="text-xs font-mono text-slate-500 uppercase mb-2 block">Technical Signals</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                                        <input type="checkbox" checked class="w-4 h-4 rounded border-slate-600 text-neon-cyan focus:ring-neon-cyan bg-slate-800">
+                                        <div>
+                                            <div class="text-sm font-medium">Recent RISC-V Commits</div>
+                                            <div class="text-xs text-slate-500">GitHub activity in last 90 days</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                                        <input type="checkbox" checked class="w-4 h-4 rounded border-slate-600 text-neon-cyan focus:ring-neon-cyan bg-slate-800">
+                                        <div>
+                                            <div class="text-sm font-medium">ISA Extension Work</div>
+                                            <div class="text-xs text-slate-500">Vector, Crypto, or Custom extensions</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                                        <input type="checkbox" class="w-4 h-4 rounded border-slate-600 text-neon-cyan focus:ring-neon-cyan bg-slate-800">
+                                        <div>
+                                            <div class="text-sm font-medium">Conference Speaker</div>
+                                            <div class="text-xs text-slate-500">RISC-V Summit, LLVM Dev Mtg, etc.</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button onclick="runDiscoverySimulation()" class="w-full py-3 bg-neon-cyan hover:bg-neon-cyan/90 text-deep-space font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 animate-spin hidden" id="search-spinner" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                <span>Deploy Agent</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Reasoning Log -->
+                    <div class="glass-panel rounded-xl p-6">
+                        <h3 class="font-semibold mb-3 flex items-center gap-2 text-sm">
+                            <div class="w-2 h-2 bg-neon-cyan rounded-full animate-pulse"></div>
+                            Agent Reasoning Log
+                        </h3>
+                        <div id="reasoning-log" class="space-y-2 text-xs font-mono text-slate-400 max-h-64 overflow-y-auto">
+                            <div class="p-2 rounded bg-white/5 text-slate-500">> Agent initialized. Waiting for parameters...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="lg:col-span-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold">Discovered Talent</h2>
+                        <div class="flex items-center gap-2 text-sm text-slate-400">
+                            <span id="result-count">0 candidates</span>
+                            <div class="h-4 w-px bg-white/10"></div>
+                            <button onclick="exportResults()" class="hover:text-white transition-colors">Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div id="candidates-container" class="space-y-4">
+                        <div class="glass-panel rounded-xl p-12 text-center text-slate-500">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white/5 flex items-center justify-center">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <p>Configure parameters and deploy the agent to discover candidates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Deep Vetting -->
+        <div id="tab-vetting" class="tab-content hidden">
+            <div class="grid lg:grid-cols-2 gap-6">
+                <!-- Candidate Input -->
+                <div class="glass-panel rounded-xl p-6">
+                    <h3 class="font-semibold mb-4">Pre-flight Technical Check</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-mono text-slate-500 uppercase mb-2 block">GitHub Profile URL</label>
+                            <input type="text" id="github-url" placeholder="https://github.com/username" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none font-mono">
+                        </div>
+                        <div>
+                            <label class="text-xs font-mono text-slate-500 uppercase mb-2 block">LinkedIn URL</label>
+                            <input type="text" id="linkedin-url" placeholder="https://linkedin.com/in/username" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none font-mono">
+                        </div>
+                        <div>
+                            <label class="text-xs font-mono text-slate-500 uppercase mb-2 block">Role Requirements</label>
+                            <textarea id="role-reqs" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none" placeholder="e.g., Deep experience with RISC-V privileged spec, LLVM backend development, cache coherence protocols..."></textarea>
+                        </div>
+                        <button onclick="runVettingAnalysis()" class="w-full py-3 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan font-bold rounded-lg hover:bg-neon-cyan/20 transition-all">
+                            Run Technical Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis Results -->
+                <div id="vetting-results" class="space-y-4">
+                    <div class="glass-panel rounded-xl p-8 text-center text-slate-500">
+                        <p>Enter candidate profiles to run the deep vetting agent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Market Intelligence -->
+        <div id="tab-market" class="tab-content hidden">
+            <div class="grid lg:grid-cols-3 gap-6 mb-6">
+                <div class="glass-panel rounded-xl p-6">
+                    <h4 class="text-sm font-mono text-slate-500 uppercase mb-2">Talent Clumping</h4>
+                    <div class="text-2xl font-bold text-white mb-1">SiFive → Tenstorrent</div>
+                    <div class="text-xs text-signal-green">+23% migration in Q2</div>
+                </div>
+                <div class="glass-panel rounded-xl p-6">
+                    <h4 class="text-sm font-mono text-slate-500 uppercase mb-2">Skill Velocity</h4>
+                    <div class="text-2xl font-bold text-white mb-1">Vector Extensions</div>
+                    <div class="text-xs text-neon-cyan">Fastest growing competency</div>
+                </div>
+                <div class="glass-panel rounded-xl p-6">
+                    <h4 class="text-sm font-mono text-slate-500 uppercase mb-2">Market Signal</h4>
+                    <div class="text-2xl font-bold text-white mb-1">Compensation +18%</div>
+                    <div class="text-xs text-warning-amber">Staff-level RISC-V architects</div>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-xl p-6">
+                <h3 class="font-semibold mb-6">Real-Time Ecosystem Map</h3>
+                <div class="relative h-96 bg-slate-900/50 rounded-lg overflow-hidden" id="ecosystem-map">
+                    <!-- SVG Ecosystem Visualization -->
+                    <svg class="w-full h-full" viewBox="0 0 800 400">
+                        <!-- Connections -->
+                        <line x1="200" y1="200" x2="400" y2="150" stroke="#00d4ff" stroke-width="1" opacity="0.3" />
+                        <line x1="400" y1="150" x2="600" y2="200" stroke="#00d4ff" stroke-width="1" opacity="0.3" />
+                        <line x1="200" y1="200" x2="350" y2="300" stroke="#10b981" stroke-width="1" opacity="0.3" />
+                        <line x1="400" y1="150" x2="350" y2="300" stroke="#f59e0b" stroke-width="2" opacity="0.5" />
+                        <line x1="600" y1="200" x2="550" y2="320" stroke="#00d4ff" stroke-width="1" opacity="0.3" />
+                        
+                        <!-- Nodes -->
+                        <g class="ecosystem-node cursor-pointer" onclick="showCompanyIntel('sifive')">
+                            <circle cx="200" cy="200" r="40" fill="#1e293b" stroke="#00d4ff" stroke-width="2" />
+                            <text x="200" y="205" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">SiFive</text>
+                            <text x="200" y="255" text-anchor="middle" fill="#94a3b8" font-size="10">142 engineers</text>
+                        </g>
+                        
+                        <g class="ecosystem-node cursor-pointer" onclick="showCompanyIntel('tenstorrent')">
+                            <circle cx="400" cy="150" r="50" fill="#1e293b" stroke="#10b981" stroke-width="2" />
+                            <text x="400" y="155" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">Tenstorrent</text>
+                            <text x="400" y="215" text-anchor="middle" fill="#94a3b8" font-size="10">Rapidly scaling</text>
+                        </g>
+                        
+                        <g class="ecosystem-node cursor-pointer" onclick="showCompanyIntel('ventana')">
+                            <circle cx="600" cy="200" r="35" fill="#1e293b" stroke="#f59e0b" stroke-width="2" />
+                            <text x="600" y="205" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Ventana</text>
+                        </g>
+                        
+                        <g class="ecosystem-node cursor-pointer" onclick="showCompanyIntel('intel')">
+                            <circle cx="350" cy="300" r="45" fill="#1e293b" stroke="#ef4444" stroke-width="2" opacity="0.8" />
+                            <text x="350" y="305" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Intel (RISC-V)</text>
+                            <text x="350" y="355" text-anchor="middle" fill="#ef4444" font-size="10">Talent outflow ↑</text>
+                        </g>
+                        
+                        <g class="ecosystem-node cursor-pointer" onclick="showCompanyIntel('startup')">
+                            <circle cx="550" cy="320" r="30" fill="#1e293b" stroke="#8b5cf6" stroke-width="2" />
+                            <text x="550" y="325" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Stealth AI</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="mt-4 flex gap-4 text-xs text-slate-500">
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-neon-cyan"></div>Stable</div>
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-signal-green"></div>Growing</div>
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-warning-amber"></div>Volatile</div>
+                    <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div>Outflow</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Outreach -->
+        <div id="tab-outreach" class="tab-content hidden">
+            <div class="grid lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-5">
+                    <div class="glass-panel rounded-xl p-6 mb-4">
+                        <h3 class="font-semibold mb-4">Candidate Profile</h3>
+                        <div class="space-y-3">
+                            <input type="text" id="outreach-name" placeholder="Candidate Name" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none">
+                            <input type="text" id="outreach-role" placeholder="Current Role (e.g., Staff Engineer @ SiFive)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none">
+                            <textarea id="outreach-context" rows="4" placeholder="Key signals: Led RVV 1.0 implementation, 12 years LLVM, spoke at RISC-V Summit 2024..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none"></textarea>
+                            <input type="text" id="outreach-company" placeholder="Target Company/Startup" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none">
+                            <input type="text" id="outreach-mission" placeholder="Company Mission (e.g., Building AI-native RISC-V cores for edge...)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-sm focus:border-neon-cyan focus:outline-none">
+                        </div>
+                    </div>
+                    <button onclick="generateThesis()" class="w-full py-3 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan font-bold rounded-lg hover:bg-neon-cyan/20 transition-all">
+                        Generate 1:1 Thesis
+                    </button>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div id="thesis-output" class="glass-panel rounded-xl p-8 min-h-[500px]">
+                        <div class="text-center text-slate-500 mt-20">
+                            <p class="mb-2">Enter candidate signals to generate personalized outreach</p>
+                            <p class="text-xs">The agent will cross-reference technical history with company mission</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Strategy Modal -->
+    <div id="strategy-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeStrategyModal()"></div>
+        <div class="absolute inset-x-4 top-20 max-w-4xl mx-auto glass-panel rounded-2xl p-8 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Strategic Advisory: RISC-V Talent Market</h2>
+                    <p class="text-slate-400">Real-time intelligence for founder conversations</p>
+                </div>
+                <button onclick="closeStrategyModal()" class="text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="p-4 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20">
+                    <h4 class="font-semibold text-neon-cyan mb-2">💡 Reframe Recommendation</h4>
+                    <p class="text-sm text-slate-300">"I know you want to hire for X, but the market is moving toward Y. Instead of a generic 'RISC-V Engineer,' reframe as 'Vector ISA Specialist with LLVM Backend Experience.' This targets the 23% of SiFive engineers who are currently exploring options but aren't actively applying."</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold mb-2">Market Clumping</h4>
+                        <p class="text-sm text-slate-400">Top talent is concentrating at Tenstorrent and stealth AI chip startups. Traditional semiconductor companies (Intel, AMD) showing net outflow in RISC-V competency.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold mb-2">Compensation Velocity</h4>
+                        <p class="text-sm text-slate-400">Staff-level RISC-V architects command 18% premium YoY. Equity packages at Series A AI hardware startups now matching FAANG cash + 2x equity multiplier.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-lg bg-white/5">
+                    <h4 class="font-semibold mb-3">Talent Movement Heatmap</h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center justify-between p-2 rounded bg-red-500/10 border border-red-500/20">
+                            <span>Intel RISC-V Group</span>
+                            <span class="text-red-400 font-mono">-12% headcount</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-signal-green/10 border border-signal-green/20">
+                            <span>Tenstorrent</span>
+                            <span class="text-signal-green font-mono">+34% headcount</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-signal-green/10 border border-signal-green/20">
+                            <span>Stealth AI Hardware (3 cos)</span>
+                            <span class="text-signal-green font-mono">+45% headcount</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentTab = 'discover';
+        let isSearching = false;
+
+        // Sample candidate data
+        const sampleCandidates = [
+            {
+                name: "Dr. Sarah Chen",
+                role: "Principal Architect, RISC-V Core Design",
+                company: "SiFive",
+                location: "San Francisco, CA",
+                match: 96,
+                signals: [
+                    "Led RVV 1.0 vector extension implementation",
+                    "45 commits to riscv-isa-sim in last 90 days",
+                    "Spoke at RISC-V Summit 2024: 'Next-gen vector processing'",
+                    "PhD MIT CSAIL, 8 years LLVM backend experience"
+                ],
+                github: "sarahchen-riscv",
+                linkedin: "sarahchen",
+                availability: "Passively exploring",
+                lastActive: "2 days ago"
+            },
+            {
+                name: "James Nakamura",
+                role: "Staff Compiler Engineer",
+                company: "Tenstorrent",
+                location: "Toronto, ON",
+                match: 94,
+                signals: [
+                    "Maintains RISC-V LLVM backend fork (2.3k stars)",
+                    "Published 3 papers on auto-vectorization",
+                    "Contributed to Spike simulator memory model",
+                    "Previously at Google TPU team"
+                ],
+                github: "jnakamura-llvm",
+                linkedin: "jamesnakamura",
+                availability: "Open to right opportunity",
+                lastActive: "5 hours ago"
+            },
+            {
+                name: "Elena Vasquez",
+                role: "Senior Silicon Validation Engineer",
+                company: "Ventana Micro",
+                location: "Austin, TX",
+                match: 91,
+                signals: [
+                    "Built RISC-V compliance test suite used by 12 companies",
+                    "Active in RISC-V International Technical Committee",
+                    "Deep expertise in cache coherence (MESI/TI)",
+                    "Previous: ARM architecture team (6 years)"
+                ],
+                github: "evasquez-silicon",
+                linkedin: "elenavasquez",
+                availability: "Not actively looking",
+                lastActive: "1 week ago"
+            },
+            {
+                name: "Marcus Webb",
+                role: "Director of AI Hardware",
+                company: "Stealth Startup",
+                location: "Palo Alto, CA",
+                match: 89,
+                signals: [
+                    "Former lead at Google Edge TPU",
+                    "Patents on RISC-V + NPU integration",
+                    "Advisory role at RISC-V International",
+                    "Network: 12 direct reports previously at Apple Silicon"
+                ],
+                github: "mwebb-aihw",
+                linkedin: "marcuswebb",
+                availability: "Building team",
+                lastActive: "1 day ago"
+            }
+        ];
+
+        // Tab switching
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active', 'text-white');
+                el.classList.add('text-slate-400');
+            });
+            event.target.classList.add('active', 'text-white');
+            event.target.classList.remove('text-slate-400');
+            currentTab = tab;
+        }
+
+        function toggleSeniority(btn) {
+            btn.parentElement.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-neon-cyan/10', 'border-neon-cyan/30', 'text-neon-cyan');
+                b.classList.add('bg-white/5', 'border-white/10', 'text-slate-400');
+            });
+            btn.classList.remove('bg-white/5', 'border-white/10', 'text-slate-400');
+            btn.classList.add('bg-neon-cyan/10', 'border-neon-cyan/30', 'text-neon-cyan');
+        }
+
+        // Discovery Simulation
+        async function runDiscoverySimulation() {
+            if (isSearching) return;
+            isSearching = true;
+            
+            const spinner = document.getElementById('search-spinner');
+            const log = document.getElementById('reasoning-log');
+            const container = document.getElementById('candidates-container');
+            
+            spinner.classList.remove('hidden');
+            container.innerHTML = '';
+            log.innerHTML = '';
+            
+            const reasoningSteps = [
+                "> Initializing multi-source agent...",
+                "> Connecting to GitHub API... authenticated.",
+                "> Scanning RISC-V organization repositories...",
+                "> Filtering commits by: vector extensions, privilege spec, LLVM backend",
+                "> Cross-referencing LinkedIn profiles...",
+                "> Found 142 potential candidates with technical signals",
+                "> Applying seniority filter: Staff+ (n=34)",
+                "> Running compatibility scoring against role requirements...",
+                "> Deep profiling top 12 candidates...",
+                "> Analyzing recent conference papers and patents...",
+                "> Finalizing high-fidelity matches..."
+            ];
+            
+            for (let i = 0; i < reasoningSteps.length; i++) {
+                await new Promise(r => setTimeout(r, 400 + Math.random() * 300));
+                const div = document.createElement('div');
+                div.className = 'p-2 rounded bg-white/5 text-slate-400 slide-up';
+                div.textContent = reasoningSteps[i];
+                log.appendChild(div);
+                log.scrollTop = log.scrollHeight;
+            }
+            
+            await new Promise(r => setTimeout(r, 600));
+            
+            document.getElementById('result-count').textContent = `${sampleCandidates.length} high-fidelity matches`;
+            
+            sampleCandidates.forEach((candidate, index) => {
+                setTimeout(() => {
+                    const card = createCandidateCard(candidate);
+                    container.appendChild(card);
+                }, index * 150);
+            });
+            
+            spinner.classList.add('hidden');
+            isSearching = false;
+            
+            // Update stats
+            animateValue('stat-mapped', 2847, 2989, 1000);
+            animateValue('stat-vetted', 142, 146, 1000);
+        }
+
+        function createCandidateCard(candidate) {
+            const div = document.createElement('div');
+            div.className = 'candidate-card glass-panel rounded-xl p-6 slide-up border border-white/5 hover:border-neon-cyan/30 transition-all cursor-pointer';
+            div.onclick = () => showCandidateDetail(candidate);
+            
+            const signalsHtml = candidate.signals.map(s => 
+                `<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-white/5 text-slate-300 border border-white/10">${s}</span>`
+            ).join('');
+            
+            div.innerHTML = `
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-neon-cyan/20 to-purple-500/20 flex items-center justify-center text-lg font-bold text-white">
+                            ${candidate.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white text-lg">${candidate.name}</h4>
+                            <p class="text-sm text-slate-400">${candidate.role} @ ${candidate.company}</p>
+                            <p class="text-xs text-slate-500 mt-1">${candidate.location} • Last active ${candidate.lastActive}</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-neon-cyan">${candidate.match}%</div>
+                        <div class="text-xs text-slate-500">Match Score</div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${signalsHtml}
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                    <div class="flex items-center gap-4 text-xs text-slate-500 font-mono">
+                        <span>GH: @${candidate.github}</span>
+                        <span>LI: @${candidate.linkedin}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 rounded-full text-xs ${candidate.availability.includes('Open') ? 'bg-signal-green/10 text-signal-green' : 'bg-white/5 text-slate-400'} border border-current opacity-80">
+                            ${candidate.availability}
+                        </span>
+                        <button onclick="event.stopPropagation(); startVetting('${candidate.name}')" class="px-3 py-1 rounded-lg text-xs bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30 hover:bg-neon-cyan/20 transition-colors">
+                            Deep Vet
+                        </button>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function showCandidateDetail(candidate) {
+            alert(`Detailed Profile for ${candidate.name}\n\nThis would open a comprehensive view with:\n- Full GitHub commit analysis\n- LinkedIn career trajectory\n- Technical assessment scores\n- Cultural fit indicators\n- Personalized outreach suggestions`);
+        }
+
+        function startVetting(name) {
+            switchTab('vetting');
+            document.getElementById('github-url').value = `https://github.com/${name.toLowerCase().replace(' ', '')}-riscv`;
+        }
+
+        // Vetting Analysis
+        async function runVettingAnalysis() {
+            const github = document.getElementById('github-url').value;
+            const linkedin = document.getElementById('linkedin-url').value;
+            const reqs = document.getElementById('role-reqs').value;
+            
+            if (!github || !reqs) {
+                alert('Please provide GitHub URL and role requirements');
+                return;
+            }
+            
+            const container = document.getElementById('vetting-results');
+            container.innerHTML = `
+                <div class="glass-panel rounded-xl p-8 text-center">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full border-2 border-neon-cyan border-t-transparent animate-spin"></div>
+                    <p class="text-slate-400">Agent analyzing technical compatibility...</p>
+                </div>
+            `;
+            
+            await new Promise(r => setTimeout(r, 2000));
+            
+            container.innerHTML = `
+                <div class="space-y-4 slide-up">
+                    <div class="glass-panel rounded-xl p-6 border-l-4 border-signal-green">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-semibold text-lg">Pre-flight Check Complete</h4>
+                            <span class="px-3 py-1 rounded-full bg-signal-green/10 text-signal-green text-sm font-bold border border-signal-green/30">RECOMMEND INTERVIEW</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="text-2xl font-bold text-white">94%</div>
+                                <div class="text-xs text-slate-500">Technical Match</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="text-2xl font-bold text-white">87%</div>
+                                <div class="text-xs text-slate-500">Cultural Fit (Predicted)</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 p-3 rounded-lg bg-signal-green/5 border border-signal-green/20">
+                                <svg class="w-5 h-5 text-signal-green mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <div class="font-medium text-sm">Strong RISC-V Privileged Spec Expertise</div>
+                                    <div class="text-xs text-slate-400">12 commits to riscv-pk, deep understanding of S-mode virtualization</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-lg bg-signal-green/5 border border-signal-green/20">
+                                <svg class="w-5 h-5 text-signal-green mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <div class="font-medium text-sm">LLVM Backend Development</div>
+                                    <div class="text-xs text-slate-400">Active contributor to RISC-V LLVM backend, understands ISel lowering</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-lg bg-warning-amber/5 border border-warning-amber/20">
+                                <svg class="w-5 h-5 text-warning-amber mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <div>
+                                    <div class="font-medium text-sm">Gap: Limited Cache Coherence Experience</div>
+                                    <div class="text-xs text-slate-400">No direct MESI/TileLink work visible. Recommend screening question.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 rounded-lg bg-white/5 code-block">
+                            <div class="text-xs font-mono text-slate-400 mb-2">// Recommended Screening Question</div>
+                            <div class="text-sm font-mono text-slate-300">"You mentioned working on the privilege spec. Walk me through how you would implement a two-stage MMU for a high-performance RISC-V application processor targeting vector workloads."</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-xl p-6">
+                        <h4 class="font-semibold mb-3">Time Savings Analysis</h4>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 mb-2">
+                            <span class="text-sm text-slate-400">Traditional screening time</span>
+                            <span class="font-mono text-slate-300">4.5 hours (resume + call + prep)</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-signal-green/5 border border-signal-green/20">
+                            <span class="text-sm text-slate-400">With High-Fidelity Agent</span>
+                            <span class="font-mono text-signal-green font-bold">0.5 hours (review agent output)</span>
+                        </div>
+                        <div class="mt-3 text-xs text-slate-500 text-right">
+                            CTO time saved: <span class="text-signal-green font-bold">4 hours</span> per candidate
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Outreach Thesis Generation
+        async function generateThesis() {
+            const name = document.getElementById('outreach-name').value;
+            const role = document.getElementById('outreach-role').value;
+            const context = document.getElementById('outreach-context').value;
+            const company = document.getElementById('outreach-company').value;
+            const mission = document.getElementById('outreach-mission').value;
+            
+            if (!name || !context || !mission) {
+                alert('Please fill in candidate name, context, and company mission');
+                return;
+            }
+            
+            const output = document.getElementById('thesis-output');
+            output.innerHTML = `
+                <div class="flex items-center justify-center h-full">
+                    <div class="text-center">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full border-2 border-neon-cyan border-t-transparent animate-spin"></div>
+                        <p class="text-slate-400 typing-cursor">Cross-referencing signals and generating personalized thesis...</p>
+                    </div>
+                </div>
+            `;
+            
+            await new Promise(r => setTimeout(r, 2500));
+            
+            const thesis = generateThesisText(name, role, context, company, mission);
+            
+            output.innerHTML = `
+                <div class="slide-up space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">1:1 Personalized Thesis</h3>
+                            <p class="text-sm text-slate-400">Generated for ${name} → ${company}</p>
+                        </div>
+                        <button onclick="copyThesis()" class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm transition-colors">Copy to Clipboard</button>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl bg-slate-900/50 border border-white/10 space-y-4">
+                        <div class="text-sm text-slate-300 leading-relaxed whitespace-pre-line">${thesis}</div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-lg font-bold text-neon-cyan">94%</div>
+                            <div class="text-xs text-slate-500">Personalization Score</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-lg font-bold text-signal-green">3.2x</div>
+                            <div class="text-xs text-slate-500">Expected vs. Generic</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-lg font-bold text-warning-amber">42%</div>
+                            <div class="text-xs text-slate-500">Predicted Response</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20">
+                        <h4 class="font-semibold text-neon-cyan text-sm mb-2">🎯 Why This Works</h4>
+                        <ul class="text-sm text-slate-400 space-y-1 list-disc list-inside">
+                            <li>References specific technical contributions (not generic "impressive background")</li>
+                            <li>Connects their past work to your company's exact technical challenge</li>
+                            <li>Demonstrates peer-level understanding of their domain</li>
+                            <li>Creates narrative continuity between their career arc and your mission</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateThesisText(name, role, context, company, mission) {
+            return `Subject: ${name.split(' ')[0]} — Your vector work + our AI-native RISC-V cores
+
+Hi ${name.split(' ')[0]},
+
+I've been following your work on the RVV 1.0 implementation, specifically your approach to handling strip-mining in the LLVM backend. The way you structured the scalable vector lowering to avoid the VL register spill issue is exactly the kind of systems thinking we need at ${company}.
+
+${mission.includes('edge') ? "We're building AI-native RISC-V cores for edge inference, and the constraint isn't just performance—it's performance per watt while maintaining software compatibility with existing vector code." : mission}
+
+Your background is unusual: most engineers with deep LLVM experience haven't also done ISA-level work. Your transition from ARM's architecture team to RISC-V gives you a rare cross-ISA perspective that most pure RISC-V shops lack. That's precisely why I'm reaching out.
+
+The specific challenge we're facing: we're implementing a custom matrix extension on top of RVV for our NPU co-processor, and we need someone who understands both the vector ISA semantics and the compiler implications of non-power-of-2 vector lengths. Your paper on "Variable-Length Vector Code Generation" directly addresses this.
+
+I know you're at ${role.split('@')[1].trim()} now, and they're doing important work. But if you've ever wanted to define an ISA extension from first principles rather than implement someone else's spec, this is that opportunity.
+
+Worth a 15-minute conversation?
+
+Best,
+[Your Name]
+
+P.S. — I noticed you spoke at the RISC-V Summit on cache coherence models. We're evaluating TileLink vs. CHI for our multi-core configuration. Would love your take, even if you're not interested in the role.`;
+        }
+
+        function copyThesis() {
+            const text = document.querySelector('#thesis-output .whitespace-pre-line').textContent;
+            navigator.clipboard.writeText(text);
+            alert('Thesis copied to clipboard!');
+        }
+
+        // Market Intelligence
+        function showCompanyIntel(company) {
+            const intel = {
+                'sifive': 'SiFive: Stable but talent becoming restless. 23% of Staff+ engineers have updated LinkedIn in last 60 days. Key concern: Stock upside limited post-acquisition rumors.',
+                'tenstorrent': 'Tenstorrent: Aggressive hiring. Jim Keller effect drawing top silicon talent. Compensation 15% above market. Risk: Work-life balance concerns.',
+                'ventana': 'Ventana: Niche but respected. Strong in data center RISC-V. Small team means high equity upside. Limited brand recognition outside core community.',
+                'intel': 'Intel RISC-V Group: Talent outflow accelerating. Engineers concerned about strategic commitment. Opportunity: Strong technical talent seeking mission-driven startups.',
+                'startup': 'Stealth AI Hardware: 3 well-funded startups ($50M+ each) aggressively recruiting. Offering 2x equity multipliers. Poaching from Tenstorrent and Google.'
+            };
+            alert(intel[company] || 'Intelligence loading...');
+        }
+
+        // Strategy Modal
+        function showStrategyModal() {
+            document.getElementById('strategy-modal').classList.remove('hidden');
+        }
+
+        function closeStrategyModal() {
+            document.getElementById('strategy-modal').classList.add('hidden');
+        }
+
+        // Utilities
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            const range = end - start;
+            const minTimer = 50;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            stepTime = Math.max(stepTime, minTimer);
+            let startTime = new Date().getTime();
+            let endTime = startTime + duration;
+            let timer;
+            
+            function run() {
+                let now = new Date().getTime();
+                let remaining = Math.max((endTime - now) / duration, 0);
+                let value = Math.round(end - (remaining * range));
+                obj.innerHTML = value.toLocaleString();
+                if (value == end) clearInterval(timer);
+            }
+            
+            timer = setInterval(run, stepTime);
+            run();
+        }
+
+        function exportResults() {
+            alert('Exporting candidate data to CSV...\n\nIn production, this would generate a detailed report with:\n- Full contact info\n- Technical signal breakdown\n- Compatibility scores\n- Recommended outreach strategy');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate initial stats
+            setTimeout(() => {
+                document.querySelectorAll('.confidence-bar').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
