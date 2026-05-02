@@ -1,5 +1,5 @@
 
-# AGENT CAPABILITIES & SKILL MANIFESTO
+# AGENT CAPABILITIES & SKILLS
 **Version:** 1.0
 **Owner:** CVE Sourcing (cvesourcing.com)
 
@@ -22,7 +22,7 @@ This agent is equipped with "High-Fidelity" recruiting capabilities, allowing it
 
 ---
 
-## 2. THE "CENTAUR" COMMUNICATION SKILL
+## 2. COMMUNICATION SKILL
 The agent does not send "spam." It generates a **1:1 Personalized Thesis** for every high-value lead.
 
 - **Technical Peer-Review:** The agent drafts outreach that references specific technical contributions, creating a "Peer-to-Peer" feel rather than a "Recruiter-to-Candidate" feel.
@@ -35,7 +35,7 @@ The agent does not send "spam." It generates a **1:1 Personalized Thesis** for e
 To protect CVE Sourcing's reputation and domain health, the agent operates under these hard limits:
 - **Daily Outreach Cap:** Max 35 high-fidelity emails per 24-hour cycle.
 - **Human-in-the-Loop:** All "Theses" must be approved by the Founder before the `outreach.js` module executes the send.
-- **LinkedIn Rate Limiting:** Max 15 profile views per hour to maintain account safety.
+- **LinkedIn Rate Limiting:** Max 10 profile views per hour to maintain account safety.
 
 ---
 
