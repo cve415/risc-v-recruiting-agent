@@ -1,39 +1,46 @@
-# SKILL: Technical & ISA Vetting (RISC-V Engineering)
-**Version:** 1.2 (Optimized for Kimi K2.6)
-**Target Roles:** Silicon Architect, RTL Engineer, Design Verification (DV), Compiler Engineer.
+Target Domains: Hardware Architecture, RTL Design, Verification, and Systems Toolchains.
 
-## 1. CORE ARCHITECTURAL SIGNALS
-The agent must scan repositories for these specific implementation patterns rather than just "RISC-V" mentions.
+1. ARCHITECTURAL EVALUATION
+The agent performs a deep-scan of repository history to verify implementation proficiency across core architectural concepts.
 
-### 1.1 Instruction Set Architecture (ISA) Depth
-- **Extension Implementation:** Look for code-level evidence of `RV32`/`RV64` with:
-  - `V` (Vector 1.0) - **Critical Signal**: Check for vector register file logic or ALU implementations.
-  - `M` (Multiply), `A` (Atomic), `F/D` (Floating Point).
-  - `K` (Scalar Cryptography) or `B` (Bit Manipulation).
-- **Control & Status Registers (CSRs):** Look for custom CSR mapping or privilege mode handling (Machine, Supervisor, User).
+1.1 ISA Implementation & Optimization
+Instruction Set Depth: Evaluates the agent's ability to identify specific extensions and custom instruction implementations within open-source cores.
 
-### 1.2 Hardware Description & Verification (HDL)
-- **RTL Quality:** Analyze SystemVerilog or Verilog for modularity. 
-  - *Green Flag:* Use of parameterized modules and clean clock/reset strategies.
-- **Verification Frameworks:** Search for `UVM` (Universal Verification Methodology) or `cocotb` (Python-based verification).
-- **Alternative HDLs:** Evidence of modern hardware construction: `Chisel`, `Bluespec`, or `SpinalHDL`.
+Privilege & Control Logic: Scans for sophisticated handling of system-level registers, custom CSRs, and privilege modes.
 
-### 1.3 System-on-Chip (SoC) Infrastructure
-- **Interconnects:** Implementation of `TileLink`, `AMBA AXI/AHB`, or `CHI` (Coherent Hub Interface).
-- **Memory Hierarchy:** Cache controller design, TLB (Translation Lookaside Buffer) logic, or DMA controllers.
+Performance Heuristics: Identifies work related to pipeline design, branch prediction, and execution unit optimization.
 
-## 2. THE "QUALITY" HEURISTIC (1-10)
-Assign a **Technical Fidelity Score** based on commit behavior:
-- **Lvl 1-3 (Surface):** Forked popular repos (e.g., RocketChip) with no original commits or only doc changes.
-- **Lvl 4-6 (Contributor):** Fixed bugs in existing cores; implemented peripheral controllers (SPI, UART, JTAG).
-- **Lvl 7-9 (Architect):** Implemented a custom multi-stage pipeline, branch predictor, or out-of-order execution logic.
-- **Lvl 10 (Master):** Maintainer of a major core (OpenTitan, VeeR, Ibex) or major contributor to RISC-V International specs.
+1.2 Hardware Construction & Verification
+HDL Design Patterns: Audits SystemVerilog/Verilog for modularity, parameterization, and clock-domain crossing (CDC) management.
 
-## 3. COMPILER & TOOLCHAIN SIGNALS
-*For Software/Firmware roles:*
-- **LLVM/GCC:** Search for "Instruction Selection," "Peephole Optimizations," or "Custom Backend" work.
-- **Simulators:** Contributions to `Spike`, `QEMU`, or `Renode`.
+Modern Hardware Methodologies: Recognizes expertise in alternative hardware construction languages (Chisel, Bluespec, etc.).
 
-## 4. OUTREACH THESIS GENERATOR
-When drafting the outreach, the agent must reference a **specific file or commit**:
-- *Hook:* "I was reviewing your implementation of the [Feature] in [Repo Name]. Your approach to handling [Technical Challenge, e.g., pipeline hazards/vector chaining] was impressive and aligns with our current roadmap at [Client]."
+Verification Rigor: Identifies the use of industry-standard frameworks (UVM) and modern Python-based verification environments.
+
+1.3 System & Interconnect Infrastructure
+Fabric & Bus Protocol: Assesses experience with high-performance interconnects and coherent hub interfaces.
+
+Memory Subsystems: Evaluates expertise in cache hierarchy, memory management units (MMUs), and DMA controller design.
+
+2. TECHNICAL FIDELITY SCORING (TFS)
+The agent assigns a weighted score (1-10) based on the nature of contributions, moving beyond basic activity metrics:
+
+Foundational: Assessment of repository engagement and basic peripheral integration.
+
+Contributory: Evaluation of bug fixes, optimization of existing modules, and unit-level verification.
+
+Architectural: Verification of original pipeline design, complex subsystem implementation, or out-of-order logic.
+
+Core Maintainer: Recognition of leadership or primary maintainer status for widely-adopted industry cores and specifications.
+
+3. TOOLCHAIN & LOW-LEVEL SOFTWARE
+Compiler Engineering: Identifies contributions to backend optimizations, instruction selection, and custom target support.
+
+Simulation & Modeling: Analyzes contributions to cycle-accurate simulators and hardware modeling environments.
+
+4. CONTEXTUAL ENGAGEMENT GENERATOR
+The agent utilizes the technical audit to draft a High-Context Thesis for each lead. This ensures outreach is grounded in actual engineering work:
+
+Contribution-Led Hooks: Outreach is triggered by specific design choices identified during the repository scan.
+
+Alignment Narrative: Maps a candidate’s specific technical challenges (e.g., hazard mitigation or vector processing) to the client’s current technical roadmap.
