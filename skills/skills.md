@@ -1,4 +1,3 @@
-
 # AGENT CAPABILITIES & SKILLS
 **Version:** 1.0
 **Owner:** CVE Sourcing (cvesourcing.com)
@@ -42,4 +41,5 @@ To protect CVE Sourcing's reputation and domain health, the agent operates under
 ## 4. FUTURE SKILLS (Roadmap)
 - [ ] **ATS Sync:** Direct integration with Greenhouse/Lever for automated stage movement.
 - [ ] **Comp-Benchmarking:** Real-time compensation velocity tracking for RISC-V roles.
+- [ ] **Conference Scraping:** Autonomous identification of speakers and attendees at the RISC-V Summit and LLVM Dev Meetings.
 - [ ] **Conference Scraping:** Autonomous identification of speakers and attendees at the RISC-V Summit and LLVM Dev Meetings.
