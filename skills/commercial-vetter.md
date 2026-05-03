@@ -1,37 +1,37 @@
-# SKILL: Commercial & GTM Vetting (Semiconductor Ecosystem)
-**Version:** 1.2 (Optimized for Kimi K2.6)
-**Target Roles:** VP of Sales, Head of BD, Strategic Partnership Manager, Product Marketing.
+# SKILL: GTM & Commercial Intelligence Vetting
+**Version:** 1.0
+**Target Roles:** VP of Sales, Business Development Directors, Product Marketing, and Strategic Partnerships.
 
-## 1. THE "DESIGN WIN" SIGNALS
-The agent must look for evidence of high-value lifecycle management rather than just "Sales" keywords.
+## 1. MARKET SIGNAL DETECTION
+The agent performs a multi-dimensional scan of market data to identify high-performing commercial leaders within the semiconductor and AI sectors.
 
-### 1.1 IP Licensing Expertise
-- **Ecosystem Knowledge:** Does the candidate have a history with Arm, Synopsys, Cadence, or Rambus? 
-- **Contract Complexity:** Look for experience in NRE (Non-Recurring Engineering) fees, royalty structures, and multi-year licensing agreements.
-- **RISC-V Transition:** Identify candidates who have successfully pivoted from proprietary ISAs (Arm/x86) to open-standard (RISC-V) business models.
+### 1.1 Strategic Growth & Ecosystem Influence
+- **Ecosystem Expansion:** Evaluates the candidate's track record in establishing presence within emerging technical standards and open-source hardware communities.
+- **Partnership Velocity:** Identifies a history of high-impact collaborations between silicon vendors, software providers, and hyperscalers.
+- **Market Entry Logic:** Audits past success in taking complex, low-level technical products from R&D to global market adoption.
 
-### 1.2 Strategic Design Wins
-- **Vertical Mastery:** Look for "Wins" in specific high-growth sectors:
-  - **Automotive:** ISO 26262 compliance, ADAS, and functional safety.
-  - **Data Center:** Hyperscale AI accelerators, CXL interconnects.
-  - **IoT/Edge:** Security (OpenTitan), ultra-low power metrics.
-- **Tier-1 Relationships:** Does the candidate mention working directly with OEMs (e.g., Apple, Tesla, Google, AWS)?
+### 1.2 Performance & Revenue Heuristics
+- **Complex Sales Cycle Mastery:** Identifies experience managing long-horizon design cycles and multi-year licensing agreements.
+- **Competitive Positioning:** Evaluates the ability to articulate value propositions in crowded technical markets (e.g., AI acceleration, custom silicon, and RISC-V).
+- **Executive Movement & Churn:** Tracks career trajectories against company performance milestones to identify "Growth Architects."
 
-### 1.3 Technical Lite Literacy
-- **The "Translator" Signal:** Can they bridge the gap between engineering and the board?
-- **Keywords:** "PPA Analysis" (Power, Performance, Area), "Benchmark-driven sales," "Architecture-led business development."
+### 1.3 Technical-Commercial Literacy
+- **Product-Technical Alignment:** Assesses the candidate's ability to bridge the gap between engineering roadmaps and customer requirements.
+- **Vertical Expertise:** Identifies specific success in target verticals such as Automotive (ISO 26262), Data Center, and Edge AI.
 
-## 2. THE "ECOSYSTEM INFLUENCE" HEURISTIC (1-10)
-- **Lvl 1-3 (Entry):** Standard account management; selling commodity hardware/software.
-- **Lvl 4-6 (Strategic):** Managing Tier-2 design wins; understanding of SoC development cycles.
-- **Lvl 7-9 (Leader):** History of $10M+ licensing deals; influence in RISC-V International working groups.
-- **Lvl 10 (Visionary):** Successfully built a GTM strategy for a new chip architecture from scratch; board-level influence.
+## 2. COMMERCIAL FIDELITY SCORING (CFS)
+The agent assigns a weighted score (1-10) based on commercial impact and domain density:
 
-## 3. MARKET INTELLIGENCE SIGNALS
-*For Market Analysts and Product Managers:*
-- **Competitive Displacement:** Evidence of "unseating" an incumbent architecture (e.g., replacing an Arm M-class core with a RISC-V Ibex core).
-- **Public Contributions:** White papers, conference talks (RISC-V Summit), or participation in ISA steering committees.
+- **Foundational:** Competency in traditional SaaS or hardware sales with standard cycle times.
+- **Strategic:** Proven success in IP licensing, semiconductor design-in processes, or high-stakes technical partnerships.
+- **Transformational:** Recognition for leading a company through a major market shift, successful IPO, or dominant category creation.
 
-## 4. OUTREACH THESIS GENERATOR
-When drafting the outreach, the agent must reference a **Market Milestone**:
-- *Hook:* "I've been following the recent design wins at [Company] in the [Sector, e.g., AI Accelerator] space. Given your background navigating the licensing complexities at [Former Company], I wanted to discuss how we are mapping the next wave of RISC-V adoption."
+## 3. ADVISORY & MARKET MAPPING
+- **Competitive Intelligence:** Synthesizes funding rounds, partnership announcements, and executive shifts to provide a real-time "Talent Heatmap."
+- **Organizational Analysis:** Identifies the structural "DNA" of successful commercial teams to help clients build balanced GTM organizations.
+
+## 4. STRATEGIC OUTREACH GENERATOR
+The agent utilizes commercial signals to draft a **Market Thesis** for high-value leadership leads:
+
+- **Market-Event Hooks:** Outreach is triggered by specific industry shifts, company milestones, or design-win signals.
+- **Value-First Positioning:** Positions the opportunity within the broader context of the candidate's career arc and the current trajectory of the semiconductor industry.
