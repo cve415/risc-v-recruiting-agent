@@ -1,0 +1,5 @@
+{
+  "agent_name": "RISC-V Architect",
+  "harness_path": "../cve-core-harness",
+  "status": "Refactoring"
+}
