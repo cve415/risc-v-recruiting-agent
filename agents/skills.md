@@ -1,4 +1,4 @@
-# AGENT CAPABILITIES & SKILL MANIFESTO
+# AGENT CAPABILITIES & SKILLS GUIDE
 **Version:** 1.0
 **Owner:** CVE Sourcing (cvesourcing.com)
 
