@@ -3,3 +3,22 @@
   "harness_path": "../cve-core-harness",
   "status": "Refactoring"
 }
+
+{
+  "agent_name": "RISC-V Recruitment Agent",
+  "version": "1.1",
+  "status": "Refactoring",
+  "base_harness_path": "../cve-core-harness",
+  "context_variables": {
+    "target_vertical": "Semiconductor and AI",
+    "domain_community": "open-source hardware and ISA standards",
+    "upstream_vendors": "Foundries, EDA tool providers, and IP vendors",
+    "downstream_providers": "Hyperscalers and OEM/ODMs",
+    "contract_type": "IP licensing and royalty",
+    "competitor_niches": "AI acceleration, custom silicon, and RISC-V",
+    "compliance_standards": "Automotive (ISO 26262) and Industrial Safety",
+    "priority_market_segments": "Data Center, Edge AI, and HPC",
+    "high_stakes_model": "semiconductor design-in processes",
+    "market_signal_triggers": "Tape-out announcements or major design-wins"
+  }
+}
