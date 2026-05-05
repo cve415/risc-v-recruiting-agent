@@ -22,3 +22,13 @@
     "market_signal_triggers": "Tape-out announcements or major design-wins"
   }
 }
+
+"gtm_context": {
+  "primary_motions": ["IP Licensing", "Design-Win Tracking", "Revenue-Sharing Models"],
+  "target_personas": ["Director of Strategic Alliances", "Technical Sales Engineer", "Field Applications Engineer (FAE)"],
+  "market_signals": [
+    "Ratification of new ISA profiles (RVA23)",
+    "Joint Venture announcements (e.g., Quintauris)",
+    "Shift from AI Training to Edge Inference sales"
+  ]
+}
