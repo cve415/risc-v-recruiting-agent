@@ -17,6 +17,7 @@ Eight companies across five countries shaping the RISC-V observability stack
 RISC-V's new Uncore PMU proposal (shoutout to Zhou Song and the team at Alibaba, Hangzhou, China) tackles exactly this blind spot. It standardizes performance monitoring for last-level cache, memory controllers, coherent interconnects, and I/O subsystems—the places where modern AI, HPC, and data center workloads actually live or die.
 
 Why this matters for three different audiences:
+
 For developers: You'll get the same uncore visibility Intel and ARM engineers already take for granted. No more assuming 40% CPU utilization means headroom, when your memory bandwidth is actually maxed out and your LLC is thrashing. The fix shifts from "tune the scheduler" to "fix the data layout"—but only if you can see it.
 
 For open-source advocates: This isn't a vendor-specific hook. It's a shared standard integrated with Linux perf and existing tooling, meaning RISC-V implementations won't fragment into proprietary monitoring silos. Ecosystem cohesion beats ecosystem lock-in.
