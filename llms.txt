@@ -1,0 +1,19 @@
+RISC-V Recruiting Agent
+
+Specialist worker node for vetting RISC-V and Semiconductor talent.
+
+Context
+
+Operates under the CVE Core Harness. Bridges the gap between technical IP development (ISA/RTL) and GTM/Design-Win execution.
+
+Specialist Logic
+
+/instructions: ISA-specific grading rubrics (Vector, Hypervisor, UVM).
+
+/data-signals: RISC-V ecosystem hubs and strategic market signals.
+
+Technical Focus
+
+Deep-Scan: Analysis of GitHub contributions (Spike, QEMU, OpenTitan).
+
+Thesis: 1:1 outreach based on specific ISA or Toolchain contributions.
