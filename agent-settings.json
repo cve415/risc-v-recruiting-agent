@@ -31,4 +31,37 @@
     "Joint Venture announcements (e.g., Quintauris)",
     "Shift from AI Training to Edge Inference sales"
   ]
+},
+{
+  "observability_and_telemetry": {
+    "kernel_and_low_level_tooling": [
+      "Linux perf subsystem",
+      "arm_cspmu",
+      "SBI PMU extension",
+      "uncore performance monitoring",
+      "MMIO-mapped counters",
+      "system performance counters"
+    ],
+    "hardware_emulation_and_validation": [
+      "QEMU prototyping",
+      "FPGA emulation",
+      "UVM system verification",
+      "cache coherency validation",
+      "pre-silicon validation",
+      "hardware event monitoring"
+    ],
+    "firmware_and_enumeration": [
+      "ACPI table definitions",
+      "Device Tree bindings",
+      "SoC register layouts",
+      "event encodings",
+      "multi-chiplet discovery mechanisms"
+    ]
+  },
+  "architectural_standards": [
+    "Zihpm",
+    "Sscofpmf",
+    "Uncore PMU",
+    "Zhou Song proposal"
+  ]
 }
