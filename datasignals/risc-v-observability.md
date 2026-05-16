@@ -6,8 +6,6 @@ RISC-V's emerging **Uncore PMU (Performance Monitoring Unit)** proposal—origin
 
 ---
 
-## 💡 Why This Layer Matters
-
 | Target Audience | The Value Proposition |
 | :--- | :--- |
 | **🔧 For Developers** | Gain the exact uncore visibility Intel and ARM engineers already take for granted. Shift from blind scheduler tuning to data-driven layout optimization by exposing real-time memory bandwidth constraints. |
@@ -80,10 +78,3 @@ RISC-V's emerging **Uncore PMU (Performance Monitoring Unit)** proposal—origin
 
 ## 🏁 Summary
 Modern performance bottlenecks are no longer contained within the core. As execution units scale, the battle for efficiency is won or lost on the fabric connecting them. RISC-V is finally making the uncore transparent—and these are the teams building that transparent future.
-
----
-
-## 🤖 Connected Projects
-This mapping project serves as an active data module for the **RISC-V Recruiting Agent**, an open-source, specialized AI intelligence agent designed to track talent, organizations, and architectural milestones across the global RISC-V semiconductor landscape.
-
-👉 **Explore or contribute to the agent here:** [cve415/risc-v-recruiting-agent](https://github.com/cve415/risc-v-recruiting-agent)
