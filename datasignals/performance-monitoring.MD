@@ -11,6 +11,12 @@ Eight companies across five countries shaping the RISC-V observability stack
 * **SiFive (San Mateo, CA, USA)** — The most recognized RISC-V processor IP brand and a benchmark for ecosystem maturity, driving standard-compliant performance monitoring across their Essential, Performance, and Intelligence lines.
 * **StarFive (Shanghai, China)** — Already shipped RISC-V performance tooling for hardware event monitoring (e.g., in the JH-7110 and JH-B100 BMC chips), mapping directly to the observability theme in data centers.
 * **Synopsys (Sunnyvale, CA, USA)** — Their verification and system-level tooling (like ZeBu and Platform Architect) are part of the "make RISC-V production-ready" stack, moving observability from simple core-tracing to complex uncore analysis.
+* **Breker Verification Systems (San Jose, CA, USA)
+Category: Tooling / Integration
+Focus: Cache coherency verification and system-level pre-silicon validation.
+
+* **Akeana (San Jose, CA, USA)
+Category: Uncore PMU / Observability
 
 ---
 
