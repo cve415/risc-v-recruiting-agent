@@ -5,7 +5,6 @@ Many of my favorite memories in performance engineering, monitoring, and observa
 RISC-V's emerging **Uncore PMU (Performance Monitoring Unit)** proposal—originating from the team at Alibaba—tackles exactly this architectural blind spot. By standardizing performance monitoring for last-level caches, memory controllers, coherent interconnects, and I/O subsystems, it brings deep observability to the exact places where modern AI, HPC, and data center scale-out workloads live or die.
 
 ---
-
 | Target Audience | The Value Proposition |
 | :--- | :--- |
 | **🔧 For Developers** | Gain the exact uncore visibility Intel and ARM engineers already take for granted. Shift from blind scheduler tuning to data-driven layout optimization by exposing real-time memory bandwidth constraints. |
