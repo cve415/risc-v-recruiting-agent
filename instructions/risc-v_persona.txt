@@ -1,0 +1,117 @@
+# persona.txt
+name: RISC-V Performance / Observability Engineer
+
+purpose:
+Identify engineers whose work aligns with RISC-V performance monitoring, observability, PMU design, uncore instrumentation, Linux perf integration, or adjacent low-level system performance work.
+
+profile:
+This persona targets engineers working at the hardware/software boundary. They are likely involved in RISC-V enablement, PMU support, kernel work, firmware interfaces, silicon validation, or performance analysis for SoCs, datacenter systems, embedded platforms, or accelerators.
+
+core_signals:
+- RISC-V experience.
+- Performance monitoring or profiling work.
+- PMU, uncore PMU, or hardware counter support.
+- Linux perf, perf_event, or sampling infrastructure.
+- Kernel, firmware, or platform enablement work.
+- System-level observability or debugging.
+- Memory, cache, interconnect, or fabric analysis.
+- Hardware/software co-design.
+- Benchmarking, tuning, or bottleneck analysis.
+
+high_value_keywords:
+- RISC-V
+- PMU
+- uncore PMU
+- performance counters
+- perf
+- perf_event
+- profiling
+- tracing
+- observability
+- microarchitecture
+- cache hierarchy
+- memory bandwidth
+- interconnect
+- NoC
+- fabric
+- latency analysis
+- bottleneck analysis
+- SoC performance
+- system performance
+- performance tuning
+- kernel support
+- firmware enablement
+- validation
+- bring-up
+- telemetry
+- event encoding
+- counter overflow
+- PMU driver
+- OpenSBI
+- Linux kernel
+
+adjacent_signals:
+- Kernel patches for RISC-V or other architectures.
+- Hardware bring-up or silicon validation work.
+- Performance tooling or observability infrastructure.
+- Datacenter, HPC, embedded Linux, or accelerator teams.
+- Vendor PMU support or architecture documentation.
+- Microarchitectural analysis in papers, talks, or repos.
+- Platform support for new silicon.
+- Debugging memory or interconnect contention.
+- Contributions to perf tooling, event models, or sampling support.
+
+titles_to_prioritize:
+- Performance Engineer
+- Hardware Performance Engineer
+- SoC Performance Engineer
+- Systems Performance Engineer
+- Kernel Engineer
+- Linux Platform Engineer
+- Firmware Engineer
+- Validation Engineer
+- Architecture Engineer
+- Observability Engineer
+- Platform Enablement Engineer
+- PMU Engineer
+- Datacenter Systems Engineer
+
+companies_to_prioritize:
+- RISC-V ecosystem companies
+- semiconductor vendors
+- chip startups
+- datacenter silicon teams
+- embedded Linux companies
+- open-source hardware projects
+- performance tooling teams
+- academic labs with systems performance research
+
+strong_match_examples:
+- Engineer mentions RISC-V PMU support or perf_event work.
+- Candidate has written kernel patches for performance counters.
+- Candidate has worked on uncore monitoring, memory subsystem visibility, or SoC telemetry.
+- Candidate has contributed to Linux or OpenSBI performance infrastructure.
+- Candidate has published or presented on profiling, counter sampling, or bottleneck analysis.
+- Candidate has brought up counters on new silicon or debugged low-level performance issues.
+
+negative_signals:
+- Pure application or front-end engineers with no systems exposure.
+- General software engineers without hardware, kernel, or performance relevance.
+- High-level RISC-V interest without implementation evidence.
+- Security-only work unless it includes profiling, tracing, or low-level observability.
+
+ranking_logic:
+1. Highest priority: built or maintained PMU, perf, or uncore infrastructure on RISC-V or similar systems.
+2. High priority: kernel, firmware, validation, or platform engineers with performance visibility work.
+3. Medium priority: adjacent systems engineers with strong low-level observability exposure.
+4. Lower priority: general RISC-V enthusiasts or conceptual contributors without implementation signals.
+
+search_strategy:
+- Search for RISC-V plus PMU, perf, profiling, observability, kernel, OpenSBI, or uncore.
+- Search for adjacent low-level systems engineers even when RISC-V is not explicit.
+- Look in mailing lists, kernel patches, conference talks, technical blogs, GitHub repos, and papers.
+- Prefer evidence of implementation over generic interest.
+- Weight candidates higher when they connect RISC-V with memory, cache, interconnect, or accelerator performance.
+
+summary:
+This persona should surface engineers who can help make RISC-V performance visible and actionable. The ideal candidate knows how to expose hardware events, interpret bottlenecks, and improve observability across the stack.
