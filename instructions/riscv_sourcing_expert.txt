@@ -1,0 +1,51 @@
+================================================================================
+CONTEXT MODULE: RISC-V PERFORMANCE & OBSERVABILITY TARGET SIGNAL MATRIX
+================================================================================
+
+name: RISC-V Performance / Observability Sourcing Expert
+
+purpose:
+Define the domain-specific target coordinates, keywords, and microarchitectural signifiers required by the Core Harness to identify engineers working on RISC-V performance monitoring, uncore instrumentation, and low-level hardware/software boundaries.
+
+profile:
+Targets engineering talent specialized in hardware enablement, PMU infrastructure, kernel profiling, firmware interfaces, silicon validation, and system-level observability for SoCs, datacenter scales, and compute accelerators.
+
+core_signals:
+  - Direct RISC-V ISA exposure or platform enablement.
+  - Hands-on implementation of Performance Monitoring Units (PMUs) or uncore tracking.
+  - Integration or patch contributions to Linux perf, perf_event, or tracing fabrics.
+  - System-level debugging involving cache coherency, memory bandwidth, or NoC/interconnect analysis.
+  - Pre-silicon performance simulation, validation, and hardware/software co-design.
+
+high_value_keywords:
+  - RISC-V, PMU, uncore PMU, performance counters
+  - perf, perf_event, profiling, tracing, telemetry
+  - microarchitecture, cache hierarchy, memory bandwidth, latency analysis
+  - interconnect, NoC, coherent fabric, bottleneck analysis
+  - SoC performance, system tuning, kernel support, OpenSBI
+  - bring-up, validation, event encoding, counter overflow, PMU driver
+
+adjacent_signals:
+  - Low-level kernel optimization patches on alternative architectures (ARM/x86).
+  - Advanced performance tooling or emulation infrastructure development (e.g., Renode, Spike).
+  - Engineering tenure within datacenter, HPC, or embedded Linux silicon teams.
+  - Microarchitectural optimization analysis documented in technical publications, repositories, or mainlists.
+
+titles_to_prioritize:
+  - Performance Engineer / SoC Performance Engineer
+  - Hardware Performance Engineer / Systems Performance Engineer
+  - Kernel Engineer / Linux Platform Engineer
+  - Firmware Engineer / Validation Engineer
+  - Platform Enablement Engineer / PMU Engineer
+
+companies_to_prioritize:
+  - RISC-V ecosystem architects and semiconductor providers.
+  - Custom silicon startups and enterprise data center accelerator teams.
+  - Open-source hardware groups and academic/systems research laboratories.
+
+negative_signals:
+  - Pure application or front-end software engineers with no systems, hardware, or kernel relevance.
+  - Conceptual or high-level project management interest without hands-on implementation evidence.
+
+summary:
+This matrix surfaces the precise engineering signals needed to make hardware execution visible. It translates specialized microarchitectural concepts into clean target signals for generalized pipeline orchestration.
