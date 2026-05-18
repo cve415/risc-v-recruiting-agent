@@ -1,0 +1,49 @@
+================================================================================
+CONTEXT MODULE: RISC-V GTM, SALES, & PRODUCT MARKETING TARGET SIGNAL MATRIX
+================================================================================
+
+name: RISC-V Commercial Go-To-Market (GTM) Sourcing Expert
+
+purpose:
+Define the domain-specific commercial coordinates, industry signals, and positioning capabilities required by the Core Harness to identify elite Sales, Product Marketing, and Business Development talent within the RISC-V and open-hardware semiconductor sectors.
+
+profile:
+Targets commercial leaders, technical sales engineers, and product marketing managers capable of translating complex microarchitectural value propositions (IP licensing, custom extensions, compute accelerators) into scalable enterprise business strategies and revenue lines.
+
+core_signals:
+  - Proven track record selling or marketing semiconductor IP, silicon design services, or EDA tooling.
+  - Deep exposure to the RISC-V ecosystem, including active participation in RISC-V International working groups or industry alliances.
+  - Ability to translate hardware-level features (e.g., custom instructions, security extensions, open-source advantages) into business value narratives for Tier-1 OEMs and hyperscalers.
+  - Experience navigating complex, long-cycle design-win processes with enterprise engineering teams.
+
+high_value_keywords:
+  - RISC-V, Semiconductor IP, IP Licensing, Silicon Design Services
+  - Product Marketing (PMM), Technical Sales, Field Applications Engineering (FAE)
+  - Design-Win, Ecosystem Development, Alliance Management, Strategic Partnerships
+  - Custom Compute, Accelerators, Custom Silicon, Open Hardware
+  - Value Proposition, Hyperscale Sales, OEM Account Management, Technical Product Positioning
+  - Instruction Set Architecture (ISA), FAB/Foundry Partnerships, EDA Tools
+
+adjacent_signals:
+  - Strong commercial execution background in alternative embedded architecture ecosystems (ARM, x86, MIPS).
+  - Background in technical product management or sales engineering for high-performance computing (HPC), automotive silicon, or edge-AI hardware.
+  - Active presence as a thought leader, panelist, or speaker at major hardware events (e.g., RISC-V Summit, Hot Chips, TSMC Ecosystem Forums).
+
+titles_to_prioritize:
+  - Product Marketing Manager (PMM) - Silicon / IP
+  - Director / VP of Business Development (Semiconductors)
+  - Technical Sales Engineer / Technical Account Manager
+  - Director of Strategic Alliances (Hardware Ecosystems)
+  - Head of Go-To-Market - Custom Compute / Architecture
+
+companies_to_prioritize:
+  - RISC-V commercial vendors, IP providers, and custom chip startups.
+  - Embedded systems and open-source software platforms actively productizing RISC-V silicon.
+  - Competitor silicon IP leaders looking to cross over into the open-architecture space.
+
+negative_signals:
+  - High-level enterprise software SaaS sales professionals lacking fundamental hardware or semiconductor lifecycle literacy.
+  - Digital marketers focused entirely on consumer/B2C growth metrics without deep tech/B2B engineering account experience.
+
+summary:
+This matrix surfaces the precise commercial signals needed to drive revenue around open architecture innovation. It separates superficial sales professionals from elite GTM strategists who understand how to successfully market and monetize deep silicon engineering.
