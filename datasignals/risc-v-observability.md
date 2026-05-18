@@ -76,7 +76,10 @@ RISC-V's emerging **Uncore PMU (Performance Monitoring Unit)** proposal—origin
 ### 🇩🇪 Lauterbach GmbH (Höhenkirchen-Siegertsbrunn, Germany)
 * **Category:**  Tooling / Integration
 * **Focus:**  Providing industry-standard hardware-assisted tracing and debugging probes (`TRACE32`). They validate on-chip hardware performance monitors (HPM) and debug transport layers at the physical bare-metal boundary with zero software overhead.
-* 
+
+###🇪🇸 Semidynamics (Barcelona, Spain)
+* **Category:** Core & Microarchitecture IP
+* **Focus:** Designing high-bandwidth, out-of-order RISC-V cores coupled with customized vector processing units (VPU). They open-source critical silicon fabric specifications—such as the Open Vector Interface (OVI)—enabling seamless performance telemetry validation across high-performance computing (HPC) and AI workloads.
 ---
 ## 🏁 Summary
 Modern performance bottlenecks are no longer contained within the core. As execution units scale, the battle for efficiency is won or lost on the fabric connecting them. RISC-V is finally making the uncore transparent—and these are the teams building that transparent future.
