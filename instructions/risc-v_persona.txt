@@ -1,4 +1,9 @@
 # persona.txt
+
+================================================================================
+CONTEXT MODULE: RISC-V PERFORMANCE & OBSERVABILITY TARGET SIGNAL MATRIX
+================================================================================
+
 name: RISC-V Performance / Observability Engineer
 
 purpose:
