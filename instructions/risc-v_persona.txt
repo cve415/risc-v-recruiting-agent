@@ -106,12 +106,14 @@ ranking_logic:
 3. Medium priority: adjacent systems engineers with strong low-level observability exposure.
 4. Lower priority: general RISC-V enthusiasts or conceptual contributors without implementation signals.
 
-search_strategy:
+domain_discovery_targets:
+
 - Search for RISC-V plus PMU, perf, profiling, observability, kernel, OpenSBI, or uncore.
 - Search for adjacent low-level systems engineers even when RISC-V is not explicit.
 - Look in mailing lists, kernel patches, conference talks, technical blogs, GitHub repos, and papers.
 - Prefer evidence of implementation over generic interest.
 - Weight candidates higher when they connect RISC-V with memory, cache, interconnect, or accelerator performance.
+
 
 summary:
 This persona should surface engineers who can help make RISC-V performance visible and actionable. The ideal candidate knows how to expose hardware events, interpret bottlenecks, and improve observability across the stack.
