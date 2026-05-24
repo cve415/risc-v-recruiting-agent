@@ -1,6 +1,5 @@
 # RISC-V Academic Ecosystem & Training Latice
-**Version:** 1.0 (Public)
-**Curated by:** CVE Sourcing in collaboration with RISC-V International Academia & Training
+**Curated by:** Christopher Velasco, member of RISC-V International Academia & Training SIG group
 
 ## 1. OVERVIEW
 This document maps the leading U.S. academic institutions integrating RISC-V into core engineering curricula and advanced research. These institutions are the primary feeders for the next generation of silicon architects and RTL engineers.
