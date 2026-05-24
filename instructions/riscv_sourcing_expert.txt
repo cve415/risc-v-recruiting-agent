@@ -1,8 +1,8 @@
 ================================================================================
-CONTEXT MODULE: RISC-V PERFORMANCE & OBSERVABILITY TARGET SIGNAL MATRIX
+CONTEXT MODULE: RISC-V TARGET SIGNAL MATRIX
 ================================================================================
 
-name: RISC-V Performance / Observability Sourcing Expert
+name: RISC-V Sourcing Expert
 
 purpose:
 Define the domain-specific target coordinates, keywords, and microarchitectural signifiers required by the Core Harness to identify engineers working on RISC-V performance monitoring, uncore instrumentation, and low-level hardware/software boundaries.
