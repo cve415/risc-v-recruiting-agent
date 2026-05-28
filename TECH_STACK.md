@@ -1,8 +1,8 @@
 # Tech Stack Summary: Agentic Recruitment Harness
 
-**Project:** RISC-V & RF Talent Intelligence Agent  
+**Project:** RISC-V Talent Intelligence Agent  
 **Architecture:** Zero-Build Tactical Frontend + Agentic Reasoning Backend  
-**Status:** Phase 2 (Methodology Preview)
+
 
 ---
 
