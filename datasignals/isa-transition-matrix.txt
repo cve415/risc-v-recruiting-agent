@@ -1,0 +1,51 @@
+=====================================================================
+
+SYSTEM EVALUATION REFERENCE: CROSS-ISA TRANSFERABLE SKILLS MATRIX
+
+=====================================================================
+
+[TRACK A: SILICON ENGINEERING TRANSFERABILITY (ARM/x86 -> RISC-V)]
+
+CORE MICROARCHITECTURE BLOCKS (100% PORTABLE)
+
+Execution Units: Out-of-Order (OoO) dispatch, instruction decode units, execution pipelines (ALU, FPU, Vector units).
+
+Memory Subsystem: L1/L2/L3 cache controller design, cache coherence protocols (MESI, MOESI), Memory Management Units (MMUs), Translation Lookaside Buffers (TLB).
+
+Control & Branching: Branch Predictors (Gshare, TAGE), Pipeline Hazard resolution (data, control, structural hazards, forwarding/stalling).
+
+INDUSTRIAL SOC FABRICS & BUS STANDARDS
+
+ARM standard interfaces (AMBA AXI, AHB, APB, CHI, ACE) translate directly to RISC-V fabric designs (TileLink, OCP, custom crossbars).
+
+High-performance physical links: PCIe Gen5/6, CXL (Compute Express Link), UCIe (Universal Chiplet Interconnect Express) are fully ISA-agnostic.
+
+SILICON ADJACENCY SIGNS (HIGH VALUE PORTABILITY)
+
+Working in custom core design divisions of companies like: Apple (M-series / A-series CPU teams), Qualcomm (Oryon/Nuvia design units), AMD (Zen core teams), Intel (x86 execution engine teams), Nvidia (custom ARM cores/Grace CPU teams).
+
+Working in verification units that write highly complex SystemVerilog + UVM environments for any high-performance custom silicon block.
+
+[TRACK B: GO-TO-MARKET / SALES TRANSFERABILITY (LEGACY IP -> RISC-V)]
+
+SEMICONDUCTOR IP COMMERCIAL FRAMEWORKS (100% PORTABLE)
+
+Direct sales experience with: ARM (Cortex, Neoverse), Imagination Technologies (PowerVR/GPUs), CEVA (DSP IP), Synopsys (DesignWare IP), Cadence (Tensilica DSPs).
+
+Negotiation mastery of: Upfront technology licensing agreements (TLA), Multi-Use Licenses (MUL), Perpetual Architecture Licenses, Per-Wafer or Per-Unit Royalty schedules (standard range: 1% - 2.5%).
+
+ADJACENT RECRUITING SIGNALS (HIGH VALUE PORTABILITY)
+
+Senior sales, GTM, or Product management roles in adjacent spaces:
+
+EDA (Electronic Design Automation) Sales: Synopsys, Cadence, Siemens/Mentor Graphics.
+
+Foundry / ASIC Services: TSMC, GlobalFoundries, Intel Foundry Services (IFS), Broadcom ASIC, Marvell ASIC.
+
+Ecosystem Alliances: Leading developer relations or industry partnerships for software/hardware toolchain enablement (e.g., getting compilers optimized for high-performance execution).
+
+GTM TRANSITION ADVANTAGE
+
+Sales reps with an ARM sales history understand the primary friction point of chip designers: licensing cost, contract restriction, and custom ISA extension locked features. They can flip this into the "Freedom to Innovate" RISC-V pitch in under a week.
+
+=====================================================================
