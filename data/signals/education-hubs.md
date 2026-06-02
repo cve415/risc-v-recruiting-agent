@@ -1,6 +1,6 @@
 # RISC-V Academic Ecosystem & Training Lattice
 
-**By:** Christopher Velasco, RISC-V International Academia & Training SIG member
+**Compiled By:** Christopher Velasco, RISC-V International Academia & Training SIG member
 
 ---
 
