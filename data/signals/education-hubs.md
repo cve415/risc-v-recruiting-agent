@@ -10,7 +10,7 @@ This document maps the leading U.S. academic institutions integrating RISC-V int
 
 ---
 
-## The Pioneers
+## US Pioneers
 
 - **UC Berkeley** – Birthplace of RISC-V, driving the open-hardware ecosystem.
 - **MIT** – Bringing RISC-V into computation structures & secure hardware research.
