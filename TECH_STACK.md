@@ -10,7 +10,7 @@
 
 | Layer | Current State | Future State (Q2 2026) |
 | :--- | :--- | :--- |
-| **Intelligence** | Hand-researched technical reports | Kimi K2.6 + Multi-Silo Data Feed (GraphQL) |
+| **Intelligence** | Hand-researched technical reports | Any LLM + Multi-Silo Data Feed (GraphQL) |
 | **Methodology** | Markdown-based Human Curation | AI-Augmented Autonomous Reasoning |
 | **Frontend** | HTML5 + Tactical CSS + Vanilla JS | Same (Zero-build / No-framework architecture) |
 | **Deployment** | GitHub Pages (Static) | GitHub Actions CI/CD + Automated Pipeline |
