@@ -1,6 +1,6 @@
 # SKILL: RISC-V Domain Validation & Artifact Verification
 **Category:** Technical Screening & Sourcing Automation  
-**Target Repository:** `riscv-recruiting-agent` (Public)
+**Target Repository:** `riscv-recruiting-agent`
 
 ## 1. INSTRUCTION SET ARCHITECTURE (ISA) VERIFICATION
 The agent possesses the ability to parse, identify, and validate source-code level evidence of specific RISC-V specifications and implementation depth rather than relying on surface-level keyword matching.
