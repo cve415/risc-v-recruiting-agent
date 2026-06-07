@@ -2,50 +2,311 @@
 
 SYSTEM EVALUATION REFERENCE: CROSS-ISA TRANSFERABLE SKILLS MATRIX
 
+Source: CVE internal intelligence + RISC-V International Annual Report 2025
+Last Updated: 2026-06-07
+
+PURPOSE: This matrix defines the talent transition pathways into RISC-V from
+adjacent ecosystems. Use it to score candidates who have zero RISC-V experience
+but whose existing skills are structurally portable. Do NOT penalize candidates
+on transition tracks for lacking RISC-V ISA familiarity — the ISA is the
+smallest part of what they bring.
+
+Pipeline routing: Transition candidates must be evaluated with their
+track-specific rubric (noted per track), not the standard RISC-V rubric.
+
 =====================================================================
 
 [TRACK A: SILICON ENGINEERING TRANSFERABILITY (ARM/x86 -> RISC-V)]
 
+=====================================================================
+
 CORE MICROARCHITECTURE BLOCKS (100% PORTABLE)
 
-Execution Units: Out-of-Order (OoO) dispatch, instruction decode units, execution pipelines (ALU, FPU, Vector units).
+Execution Units: Out-of-Order (OoO) dispatch, instruction decode units,
+execution pipelines (ALU, FPU, Vector units).
 
-Memory Subsystem: L1/L2/L3 cache controller design, cache coherence protocols (MESI, MOESI), Memory Management Units (MMUs), Translation Lookaside Buffers (TLB).
+Memory Subsystem: L1/L2/L3 cache controller design, cache coherence protocols
+(MESI, MOESI), Memory Management Units (MMUs), Translation Lookaside Buffers (TLB).
 
-Control & Branching: Branch Predictors (Gshare, TAGE), Pipeline Hazard resolution (data, control, structural hazards, forwarding/stalling).
+Control & Branching: Branch Predictors (Gshare, TAGE), Pipeline Hazard
+resolution (data, control, structural hazards, forwarding/stalling).
 
 INDUSTRIAL SOC FABRICS & BUS STANDARDS
 
-ARM standard interfaces (AMBA AXI, AHB, APB, CHI, ACE) translate directly to RISC-V fabric designs (TileLink, OCP, custom crossbars).
+ARM standard interfaces (AMBA AXI, AHB, APB, CHI, ACE) translate directly to
+RISC-V fabric designs (TileLink, OCP, custom crossbars).
 
-High-performance physical links: PCIe Gen5/6, CXL (Compute Express Link), UCIe (Universal Chiplet Interconnect Express) are fully ISA-agnostic.
+High-performance physical links: PCIe Gen5/6, CXL (Compute Express Link),
+UCIe (Universal Chiplet Interconnect Express) are fully ISA-agnostic.
 
-SILICON ADJACENCY SIGNS (HIGH VALUE PORTABILITY)
+SILICON ADJACENCY SIGNALS (HIGH VALUE PORTABILITY)
 
-Working in custom core design divisions of companies like: Apple (M-series / A-series CPU teams), Qualcomm (Oryon/Nuvia design units), AMD (Zen core teams), Intel (x86 execution engine teams), Nvidia (custom ARM cores/Grace CPU teams).
+Working in custom core design divisions of:
+- Apple (M-series / A-series CPU teams)
+- Qualcomm (Oryon / Nuvia design units)
+- AMD (Zen core teams)
+- Intel (x86 execution engine teams)
+- NVIDIA (Grace CPU / custom ARM core teams)
 
-Working in verification units that write highly complex SystemVerilog + UVM environments for any high-performance custom silicon block.
+Working in verification units that write highly complex SystemVerilog + UVM
+environments for any high-performance custom silicon block.
+
+Evaluator routing: recruiting_manager_persona.txt (standard rubric)
+
+=====================================================================
 
 [TRACK B: GO-TO-MARKET / SALES TRANSFERABILITY (LEGACY IP -> RISC-V)]
 
+=====================================================================
+
 SEMICONDUCTOR IP COMMERCIAL FRAMEWORKS (100% PORTABLE)
 
-Direct sales experience with: ARM (Cortex, Neoverse), Imagination Technologies (PowerVR/GPUs), CEVA (DSP IP), Synopsys (DesignWare IP), Cadence (Tensilica DSPs).
+Direct sales experience with:
+- ARM (Cortex, Neoverse IP licensing)
+- Imagination Technologies (PowerVR / GPU IP)
+- CEVA (DSP IP)
+- Synopsys (DesignWare IP)
+- Cadence (Tensilica DSPs)
 
-Negotiation mastery of: Upfront technology licensing agreements (TLA), Multi-Use Licenses (MUL), Perpetual Architecture Licenses, Per-Wafer or Per-Unit Royalty schedules (standard range: 1% - 2.5%).
+Negotiation mastery of: Upfront Technology Licensing Agreements (TLA),
+Multi-Use Licenses (MUL), Perpetual Architecture Licenses, Per-Wafer or
+Per-Unit Royalty schedules (standard range: 1% - 2.5%).
 
 ADJACENT RECRUITING SIGNALS (HIGH VALUE PORTABILITY)
 
-Senior sales, GTM, or Product management roles in adjacent spaces:
-
-EDA (Electronic Design Automation) Sales: Synopsys, Cadence, Siemens/Mentor Graphics.
-
-Foundry / ASIC Services: TSMC, GlobalFoundries, Intel Foundry Services (IFS), Broadcom ASIC, Marvell ASIC.
-
-Ecosystem Alliances: Leading developer relations or industry partnerships for software/hardware toolchain enablement (e.g., getting compilers optimized for high-performance execution).
+EDA Sales: Synopsys, Cadence, Siemens/Mentor Graphics.
+Foundry / ASIC Services: TSMC, GlobalFoundries, Intel Foundry Services,
+Broadcom ASIC, Marvell ASIC.
+Ecosystem Alliances: developer relations or industry partnerships for
+software/hardware toolchain enablement.
 
 GTM TRANSITION ADVANTAGE
 
-Sales reps with an ARM sales history understand the primary friction point of chip designers: licensing cost, contract restriction, and custom ISA extension locked features. They can flip this into the "Freedom to Innovate" RISC-V pitch in under a week.
+Sales reps with ARM sales history understand the primary friction point of chip
+designers: licensing cost, contract restriction, and custom ISA extension lock-in.
+They can flip this into the RISC-V "Freedom to Innovate" pitch in under a week.
+
+Key proof point to deploy in outreach: Infineon's full automotive MCU roadmap
+committed to RISC-V (March 2025) — the same customer base they already sell to
+is now buying RISC-V. No cold-start required.
+
+Evaluator routing: recruiting_manager_persona.txt
+
+=====================================================================
+
+[TRACK C: CUDA / GPU COMPUTE -> RISC-V HPC (OPENED 2025)]
+
+=====================================================================
+
+BACKGROUND: WHY THIS TRACK OPENED IN 2025
+
+At RISC-V Summit China (July 2025), NVIDIA announced it is porting its CUDA
+software platform to RISC-V, catalyzed directly by the ratification of the
+RVA23 profile. NVIDIA VP Frans Sijstermans stated: "We wouldn't have considered
+this without RVA23. It didn't just give us a stable hardware target — it gave us
+the reassurance we'd been waiting for."
+
+The EuroHPC DARE initiative (€120M, Barcelona Supercomputing Center, to 2030)
+and the RISC-V HPC SIG estimate that ~1/3 of supercomputer application runtime
+is now ported to RISC-V. This track did not exist in 2024.
+
+CUDA SOFTWARE ENGINEERS (HIGH VALUE PORTABILITY)
+
+Core transferable skills:
+- GPU-accelerated workload orchestration (kernel launch, memory transfer,
+  stream management) — maps directly to RISC-V host processor + GPU pairing
+- Parallel compute programming models (SIMD, SIMT) — maps to RVV and
+  AME/VME/IME matrix extensions
+- HPC library optimization (cuBLAS, cuDNN, NCCL) — maps to RISC-V equivalents
+  (IREE, TVM, oneDNN port, llama.cpp, GGML)
+- Performance profiling (Nsight, nvprof) — maps to RISC-V perf PMU tooling
+
+Transition mechanism: CUDA on RISC-V pairs a GPU with a RISC-V host processor.
+CUDA engineers who understand host-device memory orchestration are the connective
+tissue for this architecture.
+
+Sourcing signals:
+"CUDA kernel optimization", "GPU memory bandwidth", "parallel workload
+scheduling", "Nsight profiling", "cuBLAS", "cuDNN", "NCCL distributed training",
+"HPC scaling", "MPI", "OpenMP", "BLAS", "LAPACK"
+
+Target companies for this transition pool:
+- NVIDIA (internal RISC-V host processor teams)
+- Tenstorrent (RISC-V scale-out AI/HPC grid)
+- Barcelona Supercomputing Center (DARE initiative)
+- Semidynamics (OVI high-bandwidth RISC-V cores)
+- Any HPC accelerator startup targeting RVA23
+
+Evaluator routing: recruiting_manager_persona.txt (Role 3 SW track)
+
+=====================================================================
+
+[TRACK D: AUTOMOTIVE MCU ENGINEER -> RISC-V AUTOMOTIVE (OPENED 2025)]
+
+=====================================================================
+
+BACKGROUND: WHY THIS TRACK OPENED IN 2025
+
+In March 2025, Infineon announced its full automotive MCU roadmap will be based
+on RISC-V. Infineon makes AURIX (TriCore ISA) — the dominant safety MCU in
+European automotive. This is the equivalent of ARM announcing its server roadmap
+would move to RISC-V: it validates the platform for the entire supply chain and
+makes legacy MCU engineers the most qualified people for the RISC-V automotive
+transition.
+
+AURIX / TRICORE ENGINEERS (100% PORTABLE — Tier-2 Semiconductor)
+
+The ISA changes. Everything else stays:
+- ISO 26262 safety case artifacts (HARA, FMEA, FTA, Safety Concept) — ISA-agnostic
+- AUTOSAR stack experience (Classic BSW / Adaptive) — ISA-agnostic
+- Automotive customer relationships (OEM, Tier-1) — ISA-agnostic
+- Safety-certified toolchain mastery (TASKING, HighTec, Green Hills INTEGRITY)
+  — these vendors are already porting to RISC-V
+- Lockstep core architecture knowledge — directly applicable to RISC-V ASIL-D
+  MCU designs
+- CAN, LIN, FlexRay, automotive Ethernet, SOME/IP protocol experience — ISA-agnostic
+
+Sourcing signals:
+"AURIX", "TriCore", "TC3xx", "TC4x", "AUTOSAR MCAL", "ISO 26262 ASIL-D",
+"lockstep", "Tasking compiler", "HighTec GCC", "PXROS", "INTEGRITY RTOS"
+
+NXP S32 ENGINEERS (100% PORTABLE — Tier-2 Semiconductor)
+
+NXP is a RISE founding member with an active RISC-V automotive roadmap.
+S32K/S32G engineers bring:
+- S32 Design Studio toolchain experience (NXP building RISC-V equivalents)
+- AUTOSAR partner ecosystem knowledge (Vector, EB, ETAS)
+- Zonal controller architecture expertise (dominant next-gen vehicle topology)
+
+Sourcing signals:
+"S32K", "S32G", "NXP automotive", "zonal controller", "vehicle architecture",
+"AUTOSAR Vector", "EB tresos"
+
+RENESAS RH850 ENGINEERS (HIGH VALUE — Japan Supply Chain)
+
+Japanese automotive supply chain relationships (Toyota, Honda, Denso, Aisin)
+are among the most difficult to build from scratch. RH850 engineers bring:
+- Deep Japanese Tier-1 customer relationships
+- MISRA C compliance expertise
+- Renesas CS+ / e2 studio toolchain knowledge
+
+Sourcing signals:
+"RH850", "Renesas automotive", "V850", "CS+", "e2 studio", "MISRA C",
+"Denso", "JTEKT", "Aisin"
+
+SCORING NOTE: Do NOT penalize for lacking RISC-V ISA familiarity.
+Evaluator routing: riscv_fusa_evaluator_persona.txt (TRANSITION CANDIDATE RULES)
+
+=====================================================================
+
+[TRACK E: OEM AUTOMOTIVE SYSTEMS ARCHITECT -> RISC-V ECOSYSTEM (NEW — 2026)]
+
+=====================================================================
+
+BACKGROUND: WHY THIS IS A DISTINCT TRACK FROM TRACK D
+
+Track D covers Tier-1 and Tier-2 implementation engineers. This track covers
+Tier-0 OEM-side architects (BMW, Mercedes, Volkswagen Group, Toyota, GM, Ford,
+Stellantis). These candidates do not implement BSW — they set the vehicle-level
+safety concept, define ASIL targets for the supply chain, and make platform
+procurement decisions that determine which MCU gets designed in across an entire
+vehicle generation. One OEM architect's recommendation can move more RISC-V
+silicon volume than a hundred FAE calls.
+
+WHAT MAKES THIS PROFILE DIFFERENT
+
+OEM-side architects own:
+- Vehicle-level SOTIF (Safety Of The Intended Functionality) requirements
+- E/E (Electrical/Electronic) architecture decisions — domain vs. zonal topologies
+- Software-Defined Vehicle (SDV) platform selection (which OS, which MCU vendor)
+- Supply chain qualification gate authority (who gets on the approved vendor list)
+
+They do NOT own:
+- BSW or MCAL implementation (that is Tier-1)
+- Silicon bring-up or toolchain certification (that is Tier-2)
+
+GTM THESIS: These candidates are strategic platform hires, not implementation
+engineers. The correct RISC-V role is ecosystem strategy, Automotive SIG
+representation, or a senior technical sales role that influences OEM roadmaps —
+not an embedded firmware position.
+
+HIRING SIGNAL — flag in vetting_summary as: "OEM-side platform authority —
+route to ecosystem / strategic GTM, not firmware implementation."
+
+Sourcing signals:
+"E/E architecture", "software-defined vehicle", "vehicle platform architecture",
+"SOTIF", "ISO 21448", "functional architecture", "vehicle safety concept",
+"zone ECU", "central compute", "high-performance compute HPC vehicle",
+"OEM platform", "system integrator automotive", "BMW Group", "Mercedes-Benz R&D",
+"Volkswagen Group Innovation", "Stellantis", "Toyota Connected"
+
+Evaluator routing: riscv_fusa_evaluator_persona.txt (OEM vs. TIER-1 section)
+
+=====================================================================
+
+[TRACK F: LEGACY SPACE PROCESSOR -> RISC-V SPACE (NEW — 2025 CATALYST)]
+
+=====================================================================
+
+BACKGROUND: WHY THIS TRACK OPENED IN 2025
+
+April 2025: The first RISC-V In Space conference was hosted by ESA and Frontgrade
+Gaisler in Sweden. NASA provided an update on its HPSC SoC — a 10-core
+heterogeneous RISC-V architecture built in partnership with SiFive and Microchip,
+designed to replace obsolete space processors. Frontgrade Gaisler's NOEL-V
+radiation-hardened core completed verification in late 2025 (validated by Breker
+Systems). Both NASA and ESA are actively transitioning away from legacy processors
+(LEON3/4, RAD750, PowerPC 750) to RISC-V-based solutions.
+
+This is a niche, high-barrier pool — but the scarcity of rad-hard design
+experience means qualified candidates command significant premiums and are
+rarely actively searching.
+
+LEGACY SPACE PROCESSOR ENGINEERS (HIGH VALUE PORTABILITY)
+
+Engineers from these platforms have directly portable experience:
+- LEON3/LEON4 (SPARC V8) — Frontgrade Gaisler's predecessor; same team,
+  same customers (ESA), same radiation environment. NOEL-V is the direct successor.
+- RAD750 / PowerPC 750 (BAE Systems) — NASA/JPL mainstay; retiring in favor of HPSC
+- ERC32 / AT697 (Atmel/Microsemi) — European space legacy processors
+
+Core transferable skills (all ISA-agnostic):
+- Single Event Upset (SEU) mitigation: Triple Modular Redundancy (TMR),
+  scrubbing, error detection and correction (EDAC)
+- Radiation-hardened design methodology: Total Ionizing Dose (TID) margins,
+  latch-up hardening, heavy ion testing
+- Space-grade qualification standards: MIL-STD-1553, ECSS (ESA), DO-254
+- Fault-tolerant computing: cold/warm/hot redundancy, watchdog architectures,
+  checkpoint-restart
+- VHDL fluency — NOEL-V and most ESA rad-hard IP is VHDL-based (not SystemVerilog)
+- SpaceWire, MIL-STD-1553, CAN bus space variants — ISA-agnostic protocols
+
+IMPORTANT VHDL NOTE: This is one of the few RISC-V tracks where VHDL
+outweighs SystemVerilog as a sourcing signal. Do not penalize VHDL-primary
+candidates for lacking SystemVerilog depth — it is the correct tool for this
+vertical.
+
+Sourcing signals:
+"radiation hardened", "rad-hard", "SEU", "single event upset", "TMR",
+"triple modular redundancy", "EDAC", "TID", "latch-up", "VHDL",
+"LEON3", "LEON4", "NOEL-V", "RAD750", "PowerPC 750", "ERC32",
+"SpaceWire", "MIL-STD-1553", "ECSS", "DO-254",
+"fault tolerant", "space-grade", "NASA JPL", "ESA", "Frontgrade Gaisler",
+"Cobham Gaisler", "BAE Systems space", "Microchip space",
+"HPSC", "high performance spaceflight computing"
+
+Target companies for this transition pool:
+- Frontgrade Gaisler (Gothenburg) — NOEL-V; direct ESA partner
+- SiFive (San Mateo) — NASA HPSC SoC core IP
+- Microchip Technology (Chandler, AZ) — NASA HPSC manufacturing partner
+- Breker Verification Systems (San Jose) — space-grade verification tooling
+- Any RISC-V startup targeting defense or space compute
+
+SCORING NOTE: Space-grade background is one of the highest-barrier credentials
+in the RISC-V ecosystem. A LEON3 engineer with SEU/TMR experience is an
+automatic HIGH signal — treat as equivalent to Tier-1 silicon pedigree.
+Do NOT penalize for lacking RISC-V ISA familiarity or SystemVerilog.
+
+Evaluator routing: recruiting_manager_persona.txt (Role 1, space sub-track)
 
 =====================================================================

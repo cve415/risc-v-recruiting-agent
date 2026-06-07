@@ -1,0 +1,291 @@
+{
+  "_meta": {
+    "description": "Workload-to-Rubric semantic map. Tells Stage 2 evaluators how to interpret a candidate's background against the target vertical's current industry maturity. Used by the orchestrator to select the correct evaluation persona and scoring rubric before a credit is spent.",
+    "last_updated": "2026-06-07",
+    "source": "RISC-V International Annual Report 2025 + CVE internal intelligence"
+  },
+
+  "verticals": {
+
+    "automotive": {
+      "maturity_stage": "accelerating — Infineon committed full MCU roadmap to RISC-V in March 2025",
+      "role_route": 7,
+      "evaluator_persona": "riscv_fusa_evaluator_persona.txt",
+      "headline_signal": "Infineon announced full automotive MCU roadmap on RISC-V; Automotive SIG actively defining MCU profile (RVM) and Functional Safety (FuSa) standards",
+      "candidate_thesis": "Prioritize engineers with ISO 26262 / ASIL experience and automotive MCU background. Tricore (Infineon), S32 (NXP), RH850 (Renesas) engineers have 100% portable domain knowledge — their ISA is changing, their safety framework and customer relationships are not.",
+      "target_companies": [
+        { "name": "Infineon Technologies", "hq": "Munich, Germany", "role": "Premier RISC-V member; full automotive MCU roadmap committed" },
+        { "name": "NXP Semiconductors", "hq": "Eindhoven, Netherlands", "role": "Automotive MCU and S32 platform provider; RISE founding member" },
+        { "name": "Renesas Electronics", "hq": "Tokyo, Japan", "role": "RH850 automotive MCU; legacy transition target" },
+        { "name": "Quintauris", "hq": "Germany", "role": "Automotive software consortium; RISC-V Automotive Conference ecosystem partner" },
+        { "name": "Green Hills Software", "hq": "Santa Barbara, CA, USA", "role": "Safety-certified RTOS (INTEGRITY) for RISC-V automotive" },
+        { "name": "Tasking", "hq": "Amersfoort, Netherlands", "role": "ISO 26262 certified RISC-V compiler toolchain" },
+        { "name": "Hightec Development", "hq": "Saarbrücken, Germany", "role": "FuSa-certified GCC toolchain for RISC-V" },
+        { "name": "Lauterbach GmbH", "hq": "Höhenkirchen, Germany", "role": "TRACE32 debug probes; automotive RISC-V bring-up tooling" },
+        { "name": "PLS Programmierbare Logik & Systeme", "hq": "Lauta, Germany", "role": "Automotive debug and trace tools for RISC-V MCUs" },
+        { "name": "Synopsys", "hq": "Sunnyvale, CA, USA", "role": "EDA and IP; automotive SoC verification partner" },
+        { "name": "MathWorks", "hq": "Natick, MA, USA", "role": "Model-based design tooling for automotive RISC-V platforms" }
+      ],
+      "geo_clusters": ["Munich", "Eindhoven", "Stuttgart", "Tokyo", "Nagoya", "Detroit"],
+      "critical_specs_2025": ["RVM MCU Profile (draft)", "ISO 26262 FuSa SIG", "RISC-V Automotive Conference Sept 2025"]
+    },
+
+    "data_center": {
+      "maturity_stage": "deployment beginning — first RISC-V cloud instances live (Scaleway 2025); Server SoC spec ratified",
+      "role_route": 1,
+      "evaluator_persona": "recruiting_manager_persona.txt",
+      "headline_signal": "Scaleway launched first public RISC-V cloud instances. Server SoC 1.0, BRS, RPMI 1.0, SBI 3.0 all ratified. Canonical targeting RVA23-only builds. RISC-V Server Platform spec expected ratification end of 2026.",
+      "candidate_thesis": "Prioritize server platform architects, hypervisor engineers, and firmware engineers (UEFI/ACPI/Redfish). ACPI 6.6 added native RISC-V support in May 2025 — engineers with ACPI/UEFI background are now a direct funnel. ARM Neoverse engineers are high-value transition targets.",
+      "target_companies": [
+        { "name": "Scaleway", "hq": "Paris, France", "role": "First public RISC-V cloud hosting provider" },
+        { "name": "Canonical", "hq": "London, UK", "role": "Ubuntu; committed to RVA23-only RISC-V builds" },
+        { "name": "Red Hat", "hq": "Raleigh, NC, USA", "role": "RHEL RISC-V enablement; RISE member" },
+        { "name": "Ventana Micro Systems", "hq": "Santa Clara, CA, USA", "role": "High-performance server-class RISC-V cores; Diamond sponsor RISC-V Brazil" },
+        { "name": "Rivos Inc.", "hq": "Mountain View, CA, USA", "role": "Server-class RISC-V CPU startup; ex-Apple and ex-Intel talent density" },
+        { "name": "Akeana", "hq": "San Jose, CA, USA", "role": "Configurable server-class RISC-V processor IP" },
+        { "name": "SiFive", "hq": "San Mateo, CA, USA", "role": "P-series application processors; RISC-V IP leader" }
+      ],
+      "geo_clusters": ["Santa Clara", "Mountain View", "San Mateo", "Austin", "Paris", "London"],
+      "critical_specs_2025": ["Server SoC 1.0", "RPMI 1.0", "SBI 3.0", "BRS", "RIMT (IO Mapping Table)", "ACPI 6.6 RISC-V native support"]
+    },
+
+    "hpc": {
+      "maturity_stage": "pilot programs — NVIDIA CUDA porting to RISC-V; EuroHPC DARE initiative launched with €120M",
+      "role_route": 3,
+      "evaluator_persona": "recruiting_manager_persona.txt",
+      "headline_signal": "NVIDIA announced CUDA support for RISC-V (catalyzed by RVA23 ratification). EuroHPC DARE initiative (€120M, coordinated by Barcelona Supercomputing Center) runs to 2030. ~1/3 of supercomputer application runtime now ported to RISC-V.",
+      "candidate_thesis": "CUDA software engineers are a new direct funnel — NVIDIA explicitly stated RVA23 ratification triggered the CUDA decision. HPC SW engineers with OpenMP, MPI, or BLAS/LAPACK optimization background are high-value transitions. Vector/matrix extension (RVV, AME) expertise is the differentiating signal.",
+      "transition_paths": ["cuda_to_riscv_hpc", "arm_neoverse_to_riscv_server"],
+      "target_companies": [
+        { "name": "Barcelona Supercomputing Center (BSC)", "hq": "Barcelona, Spain", "role": "Leads €120M EuroHPC DARE RISC-V HPC initiative to 2030" },
+        { "name": "NVIDIA", "hq": "Santa Clara, CA, USA", "role": "CUDA porting to RISC-V; 1B RISC-V cores shipped in GPUs in 2024" },
+        { "name": "Semidynamics", "hq": "Barcelona, Spain", "role": "High-bandwidth OoO RISC-V cores; Open Vector Interface (OVI)" },
+        { "name": "Tenstorrent", "hq": "Austin, TX / Toronto, Canada", "role": "Scale-out AI processor on RISC-V grids; HPC AI consumer" }
+      ],
+      "geo_clusters": ["Barcelona", "Santa Clara", "Austin", "Jülich", "Stuttgart"],
+      "critical_specs_2025": ["RVA23 (catalyst for CUDA decision)", "AME / VME / IME matrix extensions (in progress)"]
+    },
+
+    "iot_embedded": {
+      "maturity_stage": "mature — strongest deployed base; RVB23 ratified end of 2024; RVM MCU profile in progress",
+      "role_route": 1,
+      "evaluator_persona": "recruiting_manager_persona.txt",
+      "headline_signal": "RVB23 ratified. RVM MCU profile draft available; ratification expected 2026. RISC-V / Edge AI Foundation partnership announced at Summit NA 2025. Google open-sourced Coral/Kelvin NPU on RISC-V.",
+      "candidate_thesis": "Established talent pool. Focus on edge AI differentiation: candidates who can run scalar + vector + AI inference on a single RISC-V core (eliminating memory copies vs. separate NPU). Load/Store Pair ratification (Jan 2025) is a signal for power-sensitive embedded work.",
+      "target_companies": [
+        { "name": "Synaptics", "hq": "San Jose, CA, USA", "role": "Integrated Google Coral NPU into Astra SL2610 IoT edge-AI SoC" },
+        { "name": "DeepComputing", "hq": "San Jose, CA, USA", "role": "RISC-V AI PC (DC-ROMA); 40+ TOPS on Ubuntu; active at multiple 2025 summits" },
+        { "name": "Nuclei System Technology", "hq": "Wuhan, China", "role": "Commercial RISC-V MCU IP for IoT and embedded" },
+        { "name": "Andes Technology", "hq": "Hsinchu, Taiwan", "role": "Commercial RISC-V IP; Computex Pavilion anchor exhibitor" },
+        { "name": "SiFive", "hq": "San Mateo, CA, USA", "role": "E-series and S-series embedded cores" }
+      ],
+      "geo_clusters": ["San Jose", "Hsinchu", "Wuhan", "Shenzhen", "Bengaluru"],
+      "critical_specs_2025": ["RVB23 (ratified 2024)", "RVM MCU Profile (draft 2025)", "Load/Store Pair RV32 (Jan 2025)", "Semihosting Spec (Feb 2025)"]
+    },
+
+    "space": {
+      "maturity_stage": "emerging — first RISC-V In Space conference April 2025; NASA HPSC SoC update; radiation-hardened IP completing verification",
+      "role_route": 1,
+      "evaluator_persona": "recruiting_manager_persona.txt",
+      "headline_signal": "First RISC-V In Space conference (ESA + Frontgrade Gaisler, Sweden, April 2025). NASA HPSC SoC: 10-core heterogeneous RISC-V (SiFive + Microchip). Frontgrade Gaisler NOEL-V radiation-hardened core completed verification late 2025.",
+      "candidate_thesis": "Niche, high-barrier pool. Rad-hard design experience (SEU mitigation, TMR, latch-up hardening) is the primary moat. Candidates from Frontgrade Gaisler, Cobham Gaisler, BAE Systems, or NASA/JPL silicon teams are Tier-1. VHDL fluency is common here (NOEL-V is VHDL-based).",
+      "target_companies": [
+        { "name": "Frontgrade Gaisler", "hq": "Gothenburg, Sweden", "role": "NOEL-V rad-hard RISC-V CPU IP; ESA LEON series successor" },
+        { "name": "SiFive", "hq": "San Mateo, CA, USA", "role": "NASA HPSC SoC core IP partner (10-core heterogeneous)" },
+        { "name": "Microchip Technology", "hq": "Chandler, AZ, USA", "role": "NASA HPSC SoC manufacturing and integration partner" },
+        { "name": "Breker Verification Systems", "hq": "San Jose, CA, USA", "role": "Validated NOEL-V with advanced scenario-based test tools" }
+      ],
+      "geo_clusters": ["Gothenburg", "Chandler AZ", "Houston TX", "Pasadena CA", "Toulouse France"],
+      "critical_specs_2025": ["RISC-V In Space conference (April 2025)", "NASA HPSC SoC (SiFive + Microchip)"]
+    },
+
+    "ai_horizontal": {
+      "maturity_stage": "exploding — nearly every new AI accelerator project in 2025 using RISC-V; matrix extension standardization in progress",
+      "role_route": 1,
+      "evaluator_persona": "recruiting_manager_persona.txt",
+      "headline_signal": "Google open-sourced Coral/Kelvin NPU (RISC-V based). NVIDIA CUDA porting to RISC-V. Three competing matrix extension paths (IME/VME/AME) in standardization. RISE AI/ML Working Group formed Feb 2025. Global AI processor revenue projected +50% over 5 years (Omdia).",
+      "candidate_thesis": "AI cuts horizontally — route to vertical-specific evaluator after initial AI signal detected. Key differentiator: candidates who understand scalar+vector+matrix unification on one core (not separate NPU). Software-side: IREE, TVM, llama.cpp, and pytorch RISC-V optimization experience are 2025/2026 hotspots.",
+      "transition_paths": ["cuda_to_riscv_hpc"],
+      "target_companies": [
+        { "name": "Google", "hq": "Mountain View, CA, USA", "role": "Open-sourced Coral/Kelvin NPU; RISE founding member; Gemini credits for RISC-V AI" },
+        { "name": "Synaptics", "hq": "San Jose, CA, USA", "role": "Astra SL2610 with integrated Coral NPU" },
+        { "name": "DeepComputing", "hq": "San Jose, CA, USA", "role": "RISC-V AI PC; 40+ TOPS on-device inference" },
+        { "name": "Tenstorrent", "hq": "Austin, TX / Toronto, Canada", "role": "RISC-V scale-out AI grid compute" }
+      ],
+      "critical_specs_2025": ["IME (Integrated Matrix Extension)", "VME (Vector Matrix Extension)", "AME (Attached Matrix Extension)", "RVV 1.0 (widely deployed in commercial cores)"]
+    },
+
+    "security_horizontal": {
+      "maturity_stage": "converging fast — Caliptra 2.1, CHERIoT 1.0, CoVE progressing to ratification; £21M UK funding for CHERIoT silicon",
+      "role_route": 8,
+      "evaluator_persona": "riscv_fusa_evaluator_persona.txt",
+      "headline_signal": "Caliptra 2.1 released (quantum-resilient RoT, OCP Global Summit Oct 2025). CHERIoT 1.0 spec released; £21M UK funding for SCI Semiconductor CHERIoT Kudu silicon. CoVE + CoVE-IO progressing through community review. OpenTitan volume production starting (Nuvoton + Google).",
+      "candidate_thesis": "Security is now a first-class horizontal, not an afterthought. Two distinct sub-tracks: (1) Hardware security IP engineers — TEE, RoT, Supervisor Domains, IOPMP; (2) Security architects who understand the threat model and can apply RISC-V's modular ISA to build isolation-by-design systems. The second type is rare and commands a premium.",
+      "target_companies": [
+        { "name": "Google", "hq": "Mountain View, CA, USA", "role": "OpenTitan project lead; Caliptra co-author; Chromebook and datacenter RoT deployment" },
+        { "name": "Nuvoton Technology", "hq": "Hsinchu, Taiwan", "role": "Volume manufacturing of OpenTitan silicon" },
+        { "name": "SCI Semiconductor", "hq": "UK", "role": "CHERIoT Kudu RISC-V core; £21M UK Digital Security by Design funding" },
+        { "name": "IBM Research", "hq": "Armonk, NY, USA", "role": "ACE (Assured Confidential Execution) on RISC-V" },
+        { "name": "lowRISC", "hq": "Cambridge, UK", "role": "OpenTitan open-source silicon root-of-trust project" }
+      ],
+      "geo_clusters": ["Mountain View", "Cambridge UK", "Hsinchu", "Armonk NY"],
+      "critical_specs_2025": ["CoVE / CoVE-IO (internal review)", "Supervisor Domains (ARC feedback complete)", "Caliptra 2.1", "CHERIoT 1.0", "Memory Tagging TG (internal review)", "SPMP (editorial stage — near ratification)", "IOPMP (restructured, progressing)"]
+    }
+  },
+
+  "geo_clusters": {
+    "silicon_valley": {
+      "cities": ["San Jose", "Santa Clara", "Sunnyvale", "Palo Alto", "Mountain View", "San Mateo", "Cupertino", "Menlo Park"],
+      "timezone": "PST",
+      "anchor_companies": ["SiFive", "Akeana", "Esperanto Technologies", "Rivos", "Google", "NVIDIA", "Synopsys", "Cadence", "Breker Verification Systems"],
+      "anchor_events": ["RISC-V Summit North America (Santa Clara, Oct 2025 — 975 attendees, 25%+ executive roles)"]
+    },
+    "austin": {
+      "cities": ["Austin", "Round Rock", "Cedar Park"],
+      "timezone": "CST",
+      "anchor_companies": ["Tenstorrent", "NXP Austin", "SiFive Austin", "IBM Austin"]
+    },
+    "paris_france": {
+      "cities": ["Paris", "Île-de-France", "Grenoble"],
+      "timezone": "CET",
+      "anchor_companies": ["Scaleway (first public RISC-V cloud instances, 2025)", "GreenWaves Technologies (Grenoble — GAP PULP edge AI)"],
+      "anchor_events": ["RISC-V Summit Europe (Paris, May 2025 — 710 attendees, 44 sessions, 180+ posters)"]
+    },
+    "munich_germany": {
+      "cities": ["Munich", "Höhenkirchen-Siegertsbrunn", "Lauta", "Nuremberg", "Saarbrücken"],
+      "timezone": "CET",
+      "anchor_companies": ["Infineon Technologies (Premier RISC-V member; full automotive MCU roadmap committed)", "Lauterbach GmbH", "PLS", "Hightec Development (Saarbrücken — FuSa GCC toolchain)"],
+      "anchor_events": [
+        "RISC-V Automotive Conference (Munich, Sept 2025 — co-hosted with Infineon, adjacent to IAA Mobility)",
+        "Embedded World (Nuremberg, March 2025 — 32,000 visitors, 1,200 exhibitors)"
+      ]
+    },
+    "stuttgart_germany": {
+      "cities": ["Stuttgart", "Böblingen"],
+      "timezone": "CET",
+      "anchor_companies": ["Bosch Automotive Electronics", "Porsche Engineering"],
+      "vertical_relevance": "automotive — Tier-1 supplier concentration; AUTOSAR and FuSa engineering talent"
+    },
+    "barcelona_spain": {
+      "cities": ["Barcelona"],
+      "timezone": "CET",
+      "anchor_companies": ["Barcelona Supercomputing Center (leads €120M EuroHPC DARE initiative to 2030)", "Semidynamics (OVI high-bandwidth RISC-V cores)"],
+      "anchor_events": ["EuroHPC DARE — €120M RISC-V HPC/AI initiative, 6-year framework to 2030"]
+    },
+    "gothenburg_sweden": {
+      "cities": ["Gothenburg"],
+      "timezone": "CET",
+      "anchor_companies": ["Frontgrade Gaisler (NOEL-V rad-hard core; ESA LEON successor)"],
+      "anchor_events": ["RISC-V In Space (April 2025 — first ever; hosted by ESA + Frontgrade Gaisler)"]
+    },
+    "stockholm_sweden": {
+      "cities": ["Stockholm", "Uppsala", "Linköping"],
+      "timezone": "CET",
+      "anchor_companies": ["IAR Systems (Uppsala — compiler/debugger for RISC-V industrial)", "Ericsson (embedded RISC-V research)"]
+    },
+    "cambridge_uk": {
+      "cities": ["Cambridge", "London", "Oxford"],
+      "timezone": "GMT",
+      "anchor_companies": ["ARM (legacy transition target — Cambridge HQ)", "lowRISC (OpenTitan project)", "SCI Semiconductor (CHERIoT Kudu)", "Raspberry Pi (RP2350 RISC-V Hazard3)", "Imperas (Synopsys) — RISC-V golden reference model"],
+      "anchor_events": ["UK Digital Security by Design — £21M CHERIoT Kudu funding (Nov 2025)"]
+    },
+    "eindhoven_netherlands": {
+      "cities": ["Eindhoven", "Nijmegen"],
+      "timezone": "CET",
+      "anchor_companies": ["NXP Semiconductors (RISE founding member; S32 RISC-V automotive roadmap)", "Axelera AI (edge AI on RISC-V)"],
+      "vertical_relevance": "automotive + edge AI — NXP S32 engineers are Track D transition targets"
+    },
+    "taiwan": {
+      "cities": ["Hsinchu", "Taipei", "Taoyuan"],
+      "timezone": "CST+8",
+      "anchor_companies": ["Andes Technology (commercial RISC-V IP; Computex anchor)", "Nuvoton Technology (OpenTitan volume manufacturing)", "MediaTek", "Realtek"],
+      "anchor_events": ["RISC-V Computex Pavilion (Taipei, May 2025 — 12 exhibitors including Andes, Tenstorrent, Skymizer)", "World RISC-V Days Hsinchu (Aug 2025)"]
+    },
+    "shanghai_china": {
+      "cities": ["Shanghai", "Zhangjiang Science Park"],
+      "timezone": "CST+8",
+      "anchor_companies": ["StarFive", "Alibaba DAMO Academy", "Milk-V", "Espressif Systems"],
+      "anchor_events": ["RISC-V Summit China (Shanghai, July 2025 — 3,000+ attendees from 17 countries; NVIDIA CUDA announcement headline)"]
+    },
+    "hangzhou_china": {
+      "cities": ["Hangzhou"],
+      "timezone": "CST+8",
+      "anchor_companies": ["Alibaba Cloud Computing — T-Head XuanTie (Uncore PMU, Zhou Song, C910 series)"]
+    },
+    "bengaluru_india": {
+      "cities": ["Bengaluru", "Whitefield", "Electronic City", "Outer Ring Road", "Marathahalli"],
+      "timezone": "IST",
+      "anchor_events": ["World RISC-V Days Bangalore (Aug 2025)"]
+    },
+    "campinas_brazil": {
+      "cities": ["Campinas", "São Paulo"],
+      "timezone": "BRT",
+      "anchor_companies": ["Eldorado Research Institute", "Embraer (HPC/aerospace RISC-V exploration)", "Petrobras (energy HPC)"],
+      "anchor_events": ["RISC-V Brazil Event (Campinas, July 2025 — Diamond sponsor: Ventana Microsystems; Ministry of Science co-presenter)"]
+    },
+    "warsaw_poland": {
+      "cities": ["Warsaw", "Gdańsk", "Poznan"],
+      "timezone": "CET",
+      "anchor_companies": ["Antmicro (Gdańsk) — Renode open-source simulator, open-hardware verification tooling"]
+    },
+    "tokyo_japan": {
+      "cities": ["Tokyo", "Yokohama", "Kawasaki"],
+      "timezone": "JST",
+      "anchor_companies": ["Renesas Electronics (RH850 → RISC-V transition target)", "Fujitsu", "Sony Semiconductor"],
+      "anchor_events": ["World RISC-V Days Tokyo (Aug 2025)"]
+    },
+    "chandler_arizona": {
+      "cities": ["Chandler", "Tempe", "Gilbert"],
+      "timezone": "MST",
+      "anchor_companies": ["Microchip Technology (NASA HPSC SoC manufacturing and integration partner)"],
+      "vertical_relevance": "space — Microchip is the silicon manufacturing partner for NASA's 10-core RISC-V HPSC SoC"
+    },
+    "tel_aviv_israel": {
+      "cities": ["Tel Aviv", "Jerusalem", "Haifa"],
+      "timezone": "IST+2",
+      "anchor_companies": ["NextSilicon (intelligent HPC hardware)", "Mobileye / Intel (EyeQ SoC with RISC-V vision processing)"]
+    },
+    "hanoi_vietnam": {
+      "cities": ["Hanoi", "Ho Chi Minh City"],
+      "timezone": "ICT",
+      "anchor_events": ["World RISC-V Days Hanoi (Aug 2025)"]
+    },
+    "karachi_pakistan": {
+      "cities": ["Karachi", "Lahore"],
+      "timezone": "PKT",
+      "anchor_events": ["World RISC-V Days Karachi + Lahore (Aug 2025)"]
+    },
+    "selangor_malaysia": {
+      "cities": ["Selangor", "Kuala Lumpur", "Penang"],
+      "timezone": "MYT",
+      "anchor_events": ["RISC-V Semiconductor Workshop, Selangor (2025 — regional supply chain and ecosystem alignment)"]
+    },
+    "denver_colorado": {
+      "cities": ["Denver", "Boulder"],
+      "timezone": "MST",
+      "anchor_events": ["Open Source Summit USA (Denver, June 2025 — Bronze sponsor RISC-V International; DeepComputing DC-ROMA RISC-V AI PC unveiled)"]
+    },
+    "amsterdam_netherlands": {
+      "cities": ["Amsterdam"],
+      "timezone": "CET",
+      "anchor_events": ["Open Source Summit Europe (Amsterdam, Aug 2025 — RISC-V + DeepComputing + Zephyr + Framework passport challenge)"]
+    }
+  },
+
+  "timezone_lookup": {
+    "PST":    ["San Jose", "Santa Clara", "Sunnyvale", "Palo Alto", "Mountain View", "San Mateo", "Cupertino", "Menlo Park"],
+    "CST":    ["Austin", "Round Rock", "Cedar Park"],
+    "MST":    ["Chandler", "Tempe", "Gilbert", "Denver", "Boulder"],
+    "EST":    ["Cambridge MA", "Boston", "New York", "Raleigh"],
+    "GMT":    ["Cambridge UK", "London", "Oxford"],
+    "CET":    ["Munich", "Nuremberg", "Stuttgart", "Paris", "Grenoble", "Barcelona", "Gothenburg", "Stockholm", "Uppsala", "Eindhoven", "Warsaw", "Gdańsk", "Amsterdam", "Saarbrücken"],
+    "IST":    ["Bengaluru", "Whitefield", "Electronic City"],
+    "IST+2":  ["Tel Aviv", "Jerusalem", "Haifa"],
+    "JST":    ["Tokyo", "Yokohama", "Kawasaki"],
+    "CST+8":  ["Hsinchu", "Taipei", "Shanghai", "Hangzhou", "Shenzhen"],
+    "BRT":    ["Campinas", "São Paulo"],
+    "ICT":    ["Hanoi", "Ho Chi Minh City"],
+    "PKT":    ["Karachi", "Lahore"],
+    "MYT":    ["Selangor", "Kuala Lumpur", "Penang"]
+  }
+}
