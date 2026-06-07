@@ -1,24 +1,194 @@
-
 [
   {
-    "company_name": "Alibaba Cloud Computing",
+    "company_name": "Alibaba Cloud Computing (T-Head / XuanTie)",
     "geography_focus": "Hangzhou, China",
-    "ecosystem_role": "Primary Driver / Standard Author",
-    "talent_sourcing_thesis": "Target engineers associated with the Uncore PMU task group, system architecture teams, and contributors to the standard MMIO performance specification framework.",
-    "priority_keywords": ["Uncore PMU", "Jing Zhang", "Zhou Song", "Zihpm"]
+    "vertical": "data_center_and_ai",
+    "ecosystem_role": "Primary Driver / Standard Author — Uncore PMU, XuanTie C910",
+    "talent_sourcing_thesis": "Target engineers associated with the T-Head XuanTie team, Uncore PMU task group, and system architecture teams contributing to the standard MMIO performance specification framework. The C910 open-source RISC-V core is one of the highest-profile contributions to the ecosystem. Jing Zhang and Zhou Song are named contributors to Zihpm/Uncore PMU standardization.",
+    "priority_keywords": ["Uncore PMU", "XuanTie", "C910", "Jing Zhang", "Zhou Song", "Zihpm", "T-Head", "MMIO performance"]
   },
   {
     "company_name": "ARM",
-    "geography_focus": "Global / US / Cambridge",
-    "ecosystem_role": "Legacy Reference Target",
-    "talent_sourcing_thesis": "Actively source kernel developers and performance engineers who designed, built, or maintained the 'arm_cspmu' (CoreSight System PMU) driver infrastructure to transition their experience directly to open RISC-V equivalents.",
-    "priority_keywords": ["arm_cspmu", "CoreSight", "System PMU", "perf system driver"]
+    "geography_focus": "Cambridge, UK (HQ) / Global",
+    "vertical": "legacy_transition",
+    "ecosystem_role": "Primary Transition Target — Silicon Engineering and GTM (Track A + Track B)",
+    "talent_sourcing_thesis": "ARM engineers are the highest-volume transition pool for RISC-V. Two tracks: (1) Silicon — kernel developers, Neoverse server architects, Cortex-R safety engineers, and CoreSight PMU driver infrastructure engineers have 100% portable microarchitecture depth. Apply Track A rules. (2) GTM — ARM IP licensing reps understand TLA, MUL, royalty schedules, and OEM procurement cycles identically to RISC-V commercial mechanics. They can flip the 'Freedom to Innovate' pitch in under a week. Apply Track B rules.",
+    "priority_keywords": ["arm_cspmu", "CoreSight", "Neoverse", "Cortex-R", "AMBA AXI", "CHI", "TLA ARM", "Cortex-A", "Mali", "System PMU", "perf system driver"]
   },
   {
     "company_name": "NVIDIA",
     "geography_focus": "Santa Clara, CA, USA / Global",
-    "ecosystem_role": "Legacy Reference Target",
-    "talent_sourcing_thesis": "Source hardware-software co-design engineers deeply experienced with the proprietary NVIDIA SCF PMU layer who understand how custom interconnect fabrics interact with enterprise AI and GPU compute workloads.",
-    "priority_keywords": ["SCF PMU", "NVIDIA custom interconnect", "fabric performance telemetry"]
+    "vertical": "hpc_and_ai",
+    "ecosystem_role": "HPC Catalyst — CUDA Porting to RISC-V Announced July 2025; 1B RISC-V Cores Shipped in GPUs (2024)",
+    "talent_sourcing_thesis": "NVIDIA announced CUDA support for RISC-V at Summit China 2025, explicitly citing RVA23 ratification as the trigger. Source two pools: (1) RISC-V host processor engineers from NVIDIA's internal teams building the CUDA-on-RISC-V host side; (2) CUDA software engineers with GPU workload orchestration experience — they are the connective tissue for the RISC-V+GPU pairing architecture. Also source from legacy Falcon/RISC-V management core teams (1B cores shipped in 2024). Apply Track C transition rules for CUDA engineers.",
+    "priority_keywords": ["CUDA", "RISC-V host processor", "Falcon core", "GPU memory orchestration", "cuBLAS", "cuDNN", "NCCL", "Nsight", "SCF PMU", "NVIDIA custom interconnect", "fabric performance telemetry"]
+  },
+  {
+    "company_name": "Infineon Technologies",
+    "geography_focus": "Munich, Germany (HQ) / Global",
+    "vertical": "automotive",
+    "ecosystem_role": "Premier RISC-V Member — Full Automotive MCU Roadmap Committed to RISC-V (March 2025)",
+    "talent_sourcing_thesis": "Infineon committed its entire automotive MCU roadmap to RISC-V in March 2025 — the most consequential automotive adoption signal of the year. Source engineers from AURIX TriCore teams (TC3xx, TC4x) who own ISO 26262 safety case artifacts and AUTOSAR BSW configuration. Their ISA is changing; their FuSa process, customer relationships, and toolchain mastery are not. Apply Track D transition rules — do not penalize for lacking RISC-V familiarity.",
+    "priority_keywords": ["AURIX", "TriCore", "TC3xx", "TC4x", "AUTOSAR MCAL", "ISO 26262", "ASIL-D", "lockstep", "TASKING compiler", "PXROS", "INTEGRITY RTOS"]
+  },
+  {
+    "company_name": "SiFive",
+    "geography_focus": "San Mateo, CA, USA",
+    "vertical": "core_ip",
+    "ecosystem_role": "RISC-V IP Market Leader — P-Series, E-Series, NASA HPSC SoC Core IP Partner",
+    "talent_sourcing_thesis": "SiFive is the densest concentration of RISC-V engineering talent globally. Source across all role tracks: RTL architects on P-series high-performance cores, toolchain engineers on Freedom SDK and OpenSBI, FAE talent who have run evaluation board bring-up for customers, and space engineers adjacent to the NASA HPSC 10-core rad-hard SoC program. High outreach sensitivity due to NDA density.",
+    "priority_keywords": ["SiFive P-series", "SiFive E-series", "Freedom SDK", "Freedom Metal", "HPSC", "TileLink", "Chisel", "rocket-chip", "boom", "OpenSBI SiFive"]
+  },
+  {
+    "company_name": "Tenstorrent",
+    "geography_focus": "Austin, TX / Toronto, Canada",
+    "vertical": "hpc_and_ai",
+    "ecosystem_role": "RISC-V AI/HPC Scale-Out Grid — Jim Keller Led; Computex Pavilion Exhibitor 2025",
+    "talent_sourcing_thesis": "Tenstorrent builds AI processors on RISC-V grids. Source engineers with scale-out AI accelerator architecture experience, NoC design, and parallel workload scheduling depth. Jim Keller's involvement draws elite microarchitecture talent — expect strong OoO pipeline and memory subsystem depth from this pool.",
+    "priority_keywords": ["Tenstorrent", "AI accelerator", "RISC-V grid", "scale-out", "NoC", "Jim Keller", "Wormhole", "Grayskull"]
+  },
+  {
+    "company_name": "Scaleway",
+    "geography_focus": "Paris, France",
+    "vertical": "data_center",
+    "ecosystem_role": "First Public RISC-V Cloud Provider — Live Instances Since 2025",
+    "talent_sourcing_thesis": "Scaleway launched the first public RISC-V cloud instances in 2025. Source infrastructure engineers who have brought up RISC-V server nodes, debugged UEFI/ACPI/firmware issues in a multi-tenant cloud context, and understand the BRS and Server SoC 1.0 spec requirements from a deployment perspective — not just a silicon perspective.",
+    "priority_keywords": ["Scaleway", "RISC-V cloud", "server bring-up", "UEFI RISC-V", "ACPI RISC-V", "cloud infrastructure RISC-V", "BRS", "Server SoC"]
+  },
+  {
+    "company_name": "Canonical",
+    "geography_focus": "London, UK (remote-first / global)",
+    "vertical": "data_center",
+    "ecosystem_role": "RVA23-Committed Linux Distro — Ubuntu RISC-V Official Support",
+    "talent_sourcing_thesis": "Canonical committed to RVA23-only RISC-V builds following Server SoC spec ratification. Source Linux distro engineers with RISC-V kernel enablement experience, package maintainers who have ported software to RISC-V, and snap infrastructure engineers who understand the Ubuntu RISC-V enablement pathway. Role 3 SW candidates.",
+    "priority_keywords": ["Ubuntu RISC-V", "RVA23", "Canonical RISC-V", "snap RISC-V", "RISC-V kernel enablement", "distro RISC-V", "meta-riscv"]
+  },
+  {
+    "company_name": "Red Hat",
+    "geography_focus": "Raleigh, NC, USA (remote-first / global)",
+    "vertical": "data_center",
+    "ecosystem_role": "RISE Founding Member — RHEL RISC-V Enablement",
+    "talent_sourcing_thesis": "Red Hat is a RISE founding member actively enabling RHEL on RISC-V. Source engineers from Red Hat's kernel and platform enablement teams who have contributed RISC-V patches upstream. Their kernel engineers are high-value Role 3 targets with direct Linux maintainer relationships.",
+    "priority_keywords": ["RHEL RISC-V", "Red Hat kernel", "RISC-V enablement", "upstream kernel RISC-V", "arch/riscv", "RISE Red Hat"]
+  },
+  {
+    "company_name": "Barcelona Supercomputing Center (BSC)",
+    "geography_focus": "Barcelona, Spain",
+    "vertical": "hpc",
+    "ecosystem_role": "EuroHPC DARE Coordinator — €120M RISC-V HPC/AI Initiative to 2030",
+    "talent_sourcing_thesis": "BSC coordinates the €120M EuroHPC DARE initiative. Source HPC software engineers with OpenMP, MPI, and BLAS/LAPACK optimization experience working in the DARE framework, and BSC computer architecture team members (MareNostrum, RISC-V vector/matrix extension research). Track C transition targets and direct Role 3 HPC SW targets.",
+    "priority_keywords": ["EuroHPC", "DARE", "MareNostrum", "BSC RISC-V", "OpenMP RISC-V", "MPI RISC-V", "HPC RISC-V", "vector extension HPC", "Barcelona Supercomputing"]
+  },
+  {
+    "company_name": "Semidynamics",
+    "geography_focus": "Barcelona, Spain",
+    "vertical": "hpc",
+    "ecosystem_role": "High-Bandwidth OoO RISC-V Cores — Open Vector Interface (OVI)",
+    "talent_sourcing_thesis": "Semidynamics builds fully customizable high-bandwidth RISC-V vector cores optimized for HPC and AI workloads. Source microarchitects with OoO execution and vector unit design experience. Their Open Vector Interface (OVI) enables third-party vector acceleration attachment — source engineers who understand decoupled vector architecture.",
+    "priority_keywords": ["Semidynamics", "OVI", "Open Vector Interface", "RISC-V vector core", "high-bandwidth RISC-V", "OoO RISC-V", "vector coprocessor"]
+  },
+  {
+    "company_name": "Google",
+    "geography_focus": "Mountain View, CA, USA",
+    "vertical": "ai_horizontal_and_security",
+    "ecosystem_role": "RISE Founding Member — OpenTitan Lead, Coral/Kelvin NPU Open-Sourced, Gemini Credits for RISC-V AI",
+    "talent_sourcing_thesis": "Google operates across three RISC-V tracks: (1) Security — OpenTitan project lead, Caliptra co-author, Chromebook and datacenter RoT deployment (Nuvoton volume production 2025); (2) AI/IoT — open-sourced Coral/Kelvin NPU (now in Synaptics Astra SL2610); (3) Software — RISE founding member funding Go, Java, pytorch, and llama.cpp RISC-V upstreaming. Source from all three pools with role-appropriate routing.",
+    "priority_keywords": ["OpenTitan", "Caliptra", "Coral NPU", "Kelvin processor", "RISC-V TPU management core", "Titan security chip", "RISE Google", "opentitan contributor", "RISC-V Gemini"]
+  },
+  {
+    "company_name": "Frontgrade Gaisler",
+    "geography_focus": "Gothenburg, Sweden",
+    "vertical": "space",
+    "ecosystem_role": "ESA RISC-V Partner — NOEL-V Radiation-Hardened Core (LEON Successor); First RISC-V In Space Conference Host",
+    "talent_sourcing_thesis": "Frontgrade Gaisler completed verification of the NOEL-V rad-hard RISC-V core in late 2025. NOEL-V is the direct successor to LEON3/LEON4 — same team, same ESA customers, new ISA. Source LEON3/4 architects and VHDL-based RTL engineers first. Apply Track F space transition rules. VHDL is the primary RTL language — do not penalize for lacking SystemVerilog.",
+    "priority_keywords": ["NOEL-V", "LEON3", "LEON4", "VHDL", "rad-hard", "SEU", "TMR", "EDAC", "ESA", "SpaceWire", "Gaisler", "radiation hardened RISC-V"]
+  },
+  {
+    "company_name": "lowRISC",
+    "geography_focus": "Cambridge, UK",
+    "vertical": "security",
+    "ecosystem_role": "OpenTitan Open-Source Silicon Root-of-Trust — Google Partnership",
+    "talent_sourcing_thesis": "lowRISC hosts the OpenTitan open-source RoT project. Nuvoton manufacturing volume shipments; Google deploying in Chromebooks and datacenters. Source hardware security engineers who have contributed to OpenTitan RTL, Caliptra, or CoVE. Active OpenTitan contribution is an Automatic HIGH signal per Role 8 rubric — treat as Tier-1 pedigree equivalent.",
+    "priority_keywords": ["OpenTitan", "lowRISC", "silicon root of trust", "Caliptra", "measured boot", "opentitan RTL", "attestation hardware", "RISC-V RoT"]
+  },
+  {
+    "company_name": "NXP Semiconductors",
+    "geography_focus": "Eindhoven, Netherlands / Austin, TX, USA",
+    "vertical": "automotive",
+    "ecosystem_role": "RISE Founding Member — S32 Automotive RISC-V Roadmap Active",
+    "talent_sourcing_thesis": "NXP is a RISE founding member with an active RISC-V automotive roadmap. S32K/S32G engineers bring zonal controller architecture expertise, AUTOSAR partner ecosystem knowledge (Vector, EB, ETAS), and automotive customer relationships that are ISA-agnostic. Apply Track D transition rules. Also source from NXP's software enablement teams porting S32 Design Studio to RISC-V.",
+    "priority_keywords": ["S32K", "S32G", "NXP automotive", "zonal controller", "AUTOSAR Vector", "EB tresos", "S32 Design Studio", "NXP RISC-V", "vehicle architecture"]
+  },
+  {
+    "company_name": "Renesas Electronics",
+    "geography_focus": "Tokyo, Japan",
+    "vertical": "automotive",
+    "ecosystem_role": "RH850 Legacy Transition Target — Japanese Supply Chain Access",
+    "talent_sourcing_thesis": "Renesas RH850 engineers carry the most valuable and hardest-to-replicate asset in the automotive RISC-V transition: deep Japanese Tier-1 relationships (Toyota, Denso, Aisin, JTEKT). Apply Track D transition rules. Also source MISRA C compliance experts and engineers with Renesas CS+/e2 studio toolchain depth.",
+    "priority_keywords": ["RH850", "Renesas automotive", "V850", "CS+", "e2 studio", "MISRA C", "Denso", "JTEKT", "Aisin", "Toyota supply chain"]
+  },
+  {
+    "company_name": "Synaptics",
+    "geography_focus": "San Jose, CA, USA",
+    "vertical": "iot_embedded_and_ai",
+    "ecosystem_role": "Astra SL2610 — Integrated Google Coral/Kelvin RISC-V NPU",
+    "talent_sourcing_thesis": "Synaptics integrated Google's open-sourced Coral/Kelvin RISC-V NPU into their Astra SL2610 IoT edge-AI SoC. Source SoC integration engineers who have combined a RISC-V control core with an NPU or AI accelerator — the defining architecture for edge-AI. Also source embedded Linux and SDK engineers who have brought up the Astra platform.",
+    "priority_keywords": ["Astra SL2610", "Coral NPU", "Kelvin processor", "Synaptics RISC-V", "edge AI SoC", "NPU integration", "always-on AI", "RISC-V IoT"]
+  },
+  {
+    "company_name": "DeepComputing",
+    "geography_focus": "San Jose, CA, USA",
+    "vertical": "iot_embedded_and_ai",
+    "ecosystem_role": "DC-ROMA RISC-V AI PC — 40+ TOPS on Ubuntu; Active at OSS USA, OSS Europe, Computex 2025",
+    "talent_sourcing_thesis": "DeepComputing unveiled the DC-ROMA RISC-V AI PC at Open Source Summit USA 2025 (40+ TOPS on Ubuntu 24.04). Active across multiple 2025 summits. Source engineers who have worked on RISC-V desktop/laptop platform bring-up, Ubuntu enablement, or on-device AI inference optimization. Strong Role 3 and Role 4 profiles.",
+    "priority_keywords": ["DC-ROMA", "RISC-V AI PC", "RISC-V laptop", "Ubuntu RISC-V desktop", "on-device inference", "TOPS RISC-V", "RISC-V consumer hardware"]
+  },
+  {
+    "company_name": "SCI Semiconductor",
+    "geography_focus": "United Kingdom",
+    "vertical": "security",
+    "ecosystem_role": "CHERIoT Kudu RISC-V Core — £21M UK Digital Security by Design Funding (Nov 2025)",
+    "talent_sourcing_thesis": "SCI Semiconductor received £21M UK government funding to adopt the CHERIoT Kudu RISC-V core in next-generation MCU products — a clear path from research to mass-deployed silicon. Source engineers with CHERI capability hardware experience, hardware memory safety architecture, and compartmentalisation design. Active CHERIoT contribution is an Automatic HIGH signal per Role 8 rubric.",
+    "priority_keywords": ["CHERIoT", "CHERI", "Kudu", "capability hardware", "hardware memory safety", "compartmentalisation", "SCI Semiconductor", "CHERIoT RISC-V"]
+  },
+  {
+    "company_name": "Nuvoton Technology",
+    "geography_focus": "Hsinchu, Taiwan",
+    "vertical": "security",
+    "ecosystem_role": "OpenTitan Volume Manufacturing — Google Chromebook and Datacenter RoT Production",
+    "talent_sourcing_thesis": "Nuvoton is manufacturing OpenTitan silicon in volume for Google's Chromebook and datacenter platforms. Source silicon validation engineers, production test engineers, and hardware security bring-up engineers who have worked on OpenTitan tapeout or silicon characterization.",
+    "priority_keywords": ["OpenTitan", "Nuvoton", "silicon RoT", "root of trust manufacturing", "tapeout validation", "security silicon bring-up", "Chromebook RoT"]
+  },
+  {
+    "company_name": "Microchip Technology",
+    "geography_focus": "Chandler, AZ, USA",
+    "vertical": "space",
+    "ecosystem_role": "NASA HPSC SoC Manufacturing and Integration Partner",
+    "talent_sourcing_thesis": "Microchip is the manufacturing and integration partner for NASA's HPSC SoC — a 10-core heterogeneous RISC-V architecture with SiFive for fault-tolerant space applications. Source system integration engineers, radiation-hardened silicon process engineers, and space qualification engineers (MIL-STD, ECSS). Apply Track F space transition rules.",
+    "priority_keywords": ["HPSC", "High Performance Spaceflight Computing", "NASA RISC-V", "rad-hard MCU", "space qualification", "MIL-STD", "fault tolerant SoC", "Microchip space"]
+  },
+  {
+    "company_name": "Antmicro",
+    "geography_focus": "Gdańsk, Poland",
+    "vertical": "toolchain_and_verification",
+    "ecosystem_role": "Renode Open-Source Simulator — RISC-V Verification and Emulation Tooling",
+    "talent_sourcing_thesis": "Antmicro builds Renode, the primary open-source multi-node simulator for RISC-V software-ahead-of-silicon development. Source simulation engineers, hardware-software co-design engineers, and RISC-V verification tooling engineers. Active CHIPS Alliance contributor with strong FPGA-based RISC-V prototyping expertise.",
+    "priority_keywords": ["Renode", "Antmicro", "RISC-V simulation", "multi-node simulation", "FPGA RISC-V", "CHIPS Alliance", "open-source EDA", "software ahead of silicon"]
+  },
+  {
+    "company_name": "Andes Technology",
+    "geography_focus": "Hsinchu, Taiwan / San Jose, CA, USA",
+    "vertical": "core_ip",
+    "ecosystem_role": "Commercial RISC-V IP — Dominant in High-Efficiency Embedded and DSP Extensions",
+    "talent_sourcing_thesis": "Andes is the anchor exhibitor of the RISC-V Computex Pavilion and the dominant commercial RISC-V IP provider in the Taiwan ecosystem. Source embedded core architects, DSP extension engineers, and IP licensing specialists. Their AE and FAE talent have the deepest RISC-V customer engagement experience in the Asia-Pacific market.",
+    "priority_keywords": ["Andes Technology", "AndesCore", "DSP extension RISC-V", "N25", "NX27V", "RISC-V Taiwan", "Andes IP licensing"]
+  },
+  {
+    "company_name": "Ventana Micro Systems",
+    "geography_focus": "Santa Clara, CA, USA",
+    "vertical": "data_center",
+    "ecosystem_role": "Data-Center Class RISC-V Chiplets — Diamond Sponsor RISC-V Brazil 2025",
+    "talent_sourcing_thesis": "Ventana builds server-class RISC-V chiplets (Veyron series) targeting data center and AI inference workloads. Diamond sponsor of RISC-V Brazil Event 2025. Source chiplet architects, UCIe/CXL interconnect engineers, and server platform bring-up engineers. Strong Role 1 and Role 3 target pool.",
+    "priority_keywords": ["Ventana", "Veyron", "RISC-V chiplet", "UCIe", "data center RISC-V", "server-class RISC-V", "CXL RISC-V"]
   }
 ]
