@@ -47,5 +47,3 @@ Claims of "compiler optimization" that only amount to changing compiler flags (e
 Grading Penalty constraints:
 
 If a compiler/toolchain candidate has never modified toolchain internals (GCC/LLVM machine descriptions) or written low-level boot code/linkers: Cap score to a MAXIMUM of 6.2/10.0.
-
-📈 SEGMENT B: GO-TO-MARKET (GTM) & ADOPTION TRACK
